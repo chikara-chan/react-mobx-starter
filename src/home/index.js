@@ -1,32 +1,30 @@
 import React from 'react'
 import {render} from 'react-dom'
-import {AppContainer} from 'react-hot-loader'
-import Common from 'common/containers/Common'
-import App from './containers/Root'
-import configureStore from './store/configureStore'
+import configureStore from '../common/store/configureStore'
+import Common from '../common/containers/Root'
+import reducers from './reducers'
+import App from './containers/App'
 
-const store = configureStore()
+const store = configureStore(reducers)
 
 render(
-  <Common>
-    <AppContainer>
-      <App store={store}/>
-    </AppContainer>
+  <Common store={store}>
+    <App/>
   </Common>,
   document.getElementById('root')
 )
 
 if (module.hot) {
-  module.hot.accept('./containers/Root', () => {
-    const RootContainer = require('./containers/Root')
-
+  module.hot.accept('./containers/App', () => {
+    const NextApp = require('./containers/App')
     render(
-      <Common>
-        <AppContainer>
-          <RootContainer store={store}/>
-        </AppContainer>
+      <Common store={store}>
+        <NextApp/>
       </Common>,
       document.getElementById('root')
     )
+  })
+  module.hot.accept('./reducers', () => {
+    store.replaceReducer(require('./reducers'))
   })
 }

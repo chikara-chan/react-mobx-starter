@@ -1,5 +1,6 @@
-@import 'mixins';
+@import '../../shared/mixins';
 
 .main {
-  font-size: $size-xl;
+  padding-top: 50px;
+  padding-left: 200px;
 }

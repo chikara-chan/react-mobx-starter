@@ -3,6 +3,7 @@ import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
 import actions from '../actions'
 import styles from '../sass/App'
+import MainSection from '../components/MainSection'
 
 class App extends PureComponent {
   constructor() {
@@ -11,10 +12,11 @@ class App extends PureComponent {
 
   render() {
     const {actions, orders} = this.props
+    console.log(actions)
 
     return (
       <div className={styles.app}>
-        111111
+        <MainSection orders={orders} actions={actions}/>
       </div>
     )
   }

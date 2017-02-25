@@ -16,7 +16,7 @@ class Common extends PureComponent {
     const {actions, orders, children} = this.props
 
     return (
-      <div className={styles.app}>
+      <div className={styles.common}>
         <Header actions={actions}/>
         <Navbar actions={actions}/>
         <Main actions={actions} orders={orders}>

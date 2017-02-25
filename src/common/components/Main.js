@@ -1,20 +1,14 @@
 import React, {PureComponent} from 'react'
 import styles from '../sass/Main'
 
-class Main extends PureComponent {
-  constructor() {
-    super()
-  }
+function Main(props) {
+  const {children} = props
 
-  render() {
-    const {orders, children} = this.props
-
-    return (
-      <main className={styles.main}>
-        {children}
-      </main>
-    )
-  }
+  return (
+    <main className={styles.main}>
+      {children}
+    </main>
+  )
 }
 
 export default Main
