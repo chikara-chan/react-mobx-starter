@@ -1,1 +1,1 @@
-test2.js
+dist test2.js
