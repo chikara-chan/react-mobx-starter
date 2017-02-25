@@ -12,7 +12,6 @@ class App extends PureComponent {
 
   render() {
     const {actions, orders} = this.props
-    console.log(actions)
 
     return (
       <div className={styles.app}>
