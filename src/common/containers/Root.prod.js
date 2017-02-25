@@ -1,6 +1,6 @@
 import React, {PureComponent} from 'react'
 import {Provider} from 'react-redux'
-import App from 'common/containers/Common'
+import App from './Common'
 
 class Root extends PureComponent {
   render() {

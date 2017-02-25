@@ -1,8 +1,8 @@
 import React, {PureComponent} from 'react'
 import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
-import actions from 'home/actions'
-import styles from 'home/sass/App'
+import actions from '../actions'
+import styles from '../sass/App'
 
 class App extends PureComponent {
   constructor() {
@@ -14,7 +14,7 @@ class App extends PureComponent {
 
     return (
       <div className={styles.app}>
-        11111
+        111111
       </div>
     )
   }

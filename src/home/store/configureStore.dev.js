@@ -1,7 +1,8 @@
 import {applyMiddleware, compose, createStore} from 'redux'
+import {persistState} from 'redux-devtools'
 import thunk from 'redux-thunk'
-import rootReducer from 'home/reducers'
-import DevTools from 'home/containers/DevTools'
+import rootReducer from '../reducers'
+import DevTools from '../containers/DevTools'
 
 export default function configureStore(preloadedState) {
   const store = createStore(
@@ -9,15 +10,18 @@ export default function configureStore(preloadedState) {
     preloadedState,
     compose(
       applyMiddleware(thunk),
-      DevTools.instrument()
+      DevTools.instrument(),
+      persistState(
+        window.location.href.match(
+          /[?&]debug_session=([^&#]+)\b/
+        )
+      )
     )
   )
 
   if (module.hot) {
     module.hot.accept('../reducers', () => {
-      const nextRootReducer = require('../reducers')
-
-      store.replaceReducer(nextRootReducer)
+      store.replaceReducer(require('../reducers'))
     })
   }
 

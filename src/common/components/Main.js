@@ -1,5 +1,5 @@
 import React, {PureComponent} from 'react'
-import styles from 'common/sass/Main'
+import styles from '../sass/Main'
 
 class Main extends PureComponent {
   constructor() {

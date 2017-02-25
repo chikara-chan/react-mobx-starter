@@ -1,32 +1,32 @@
 import React from 'react'
 import {render} from 'react-dom'
+import {AppContainer} from 'react-hot-loader'
 import Common from 'common/containers/Common'
-import App from 'home/containers/Root'
-import configureStore from 'home/store/configureStore'
-
-import { AppContainer } from 'react-hot-loader'
+import App from './containers/Root'
+import configureStore from './store/configureStore'
 
 const store = configureStore()
 
 render(
-  <AppContainer>
-    <Common>
+  <Common>
+    <AppContainer>
       <App store={store}/>
-    </Common>
-  </AppContainer>,
+    </AppContainer>
+  </Common>,
   document.getElementById('root')
 )
 
 if (module.hot) {
-  module.hot.accept('home/containers/Root', () => {
-    const RootContainer = require('home/containers/Root');
+  module.hot.accept('./containers/Root', () => {
+    const RootContainer = require('./containers/Root')
+
     render(
-      <AppContainer>
-  <Common>
-    <RootContainer store={store}/>
-  </Common>
-      </AppContainer>,
+      <Common>
+        <AppContainer>
+          <RootContainer store={store}/>
+        </AppContainer>
+      </Common>,
       document.getElementById('root')
-    );
-  });
+    )
+  })
 }

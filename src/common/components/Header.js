@@ -1,5 +1,5 @@
 import React, {PureComponent} from 'react'
-import styles from 'common/sass/Header'
+import styles from '../sass/Header'
 
 class Header extends PureComponent {
   constructor() {
@@ -8,7 +8,7 @@ class Header extends PureComponent {
 
   render() {
     return (
-      <header className={styles.header} onClick={::this.handleClick}>
+      <header className={styles.header}>
         <div className={styles.left}>
           <span className={styles.span}>Boilerplate</span>
         </div>

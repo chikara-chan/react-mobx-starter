@@ -1,6 +1,6 @@
 import React, {PureComponent} from 'react'
-import styles from 'sass/Main'
-import Order from 'components/Order'
+import styles from '../sass/Main'
+import Order from './Order'
 
 class Main extends PureComponent {
   constructor() {
