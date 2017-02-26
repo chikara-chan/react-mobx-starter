@@ -1,5 +1,6 @@
 import React, {PureComponent} from 'react'
 import styles from '../sass/Order'
+import {Card} from 'antd'
 
 class Order extends PureComponent {
   constructor() {
@@ -11,7 +12,9 @@ class Order extends PureComponent {
 
     return (
       <div className={styles.order}>
-        {order.name}
+        <Card className={styles.card} title={order.id}>
+          {order.name}
+        </Card>
       </div>
     )
   }

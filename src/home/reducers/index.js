@@ -1,16 +1,7 @@
 import {combineReducers} from 'redux'
 import types from '../constants/ActionTypes'
 
-const initialOrders = [{
-  id: '1',
-  name: '订单1'
-}, {
-  id: '2',
-  name: '订单2'
-}, {
-  id: '3',
-  name: '订单3'
-}]
+const initialOrders = []
 
 function orders(state = initialOrders, action) {
   switch (action.type) {

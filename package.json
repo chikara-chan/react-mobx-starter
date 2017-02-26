@@ -4,13 +4,14 @@
   "version": "1.0.0",
   "description": "采购商城买家版",
   "scripts": {
-    "dev": "cross-env NODE_ENV=development node ./config/server.js",
-    "build": "cross-env NODE_ENV=production webpack --config ./config/webpack.prod.config.js --progress",
+    "dev": "cross-env NODE_ENV=development node ./tools/server.js",
+    "build": "cross-env NODE_ENV=production webpack --config ./tools/webpack.prod.config.js --progress",
     "clean": "rimraf ./build/*",
     "lint": "eslint . --ext .js",
     "lint:fix": "npm run lint -- --fix"
   },
   "dependencies": {
+    "antd": "^2.7.2",
     "invincible": "^1.2.0",
     "react": "^15.3.1",
     "react-dom": "^15.3.1",
@@ -54,7 +55,8 @@
     "sass-loader": "^6.0.1",
     "style-loader": "^0.13.1",
     "url-loader": "^0.5.8",
-    "webpack": "^2.2.1"
+    "webpack": "^2.2.1",
+    "webpack-merge": "^3.0.0"
   },
   "author": [
     "Bo Fang",
