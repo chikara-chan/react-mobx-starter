@@ -1,5 +1,5 @@
 import types from '../constants/ActionTypes'
-import utils from 'shared/utils'
+import ajax from 'shared/ajax'
 
 function replaceOrders(orders) {
   return {

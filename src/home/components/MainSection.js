@@ -7,15 +7,11 @@ class MainSection extends PureComponent {
     super()
   }
 
-  handleClick() {
-    this.props.actions.fetchOrders()
-  }
-
   render() {
     const {orders} = this.props
 
     return (
-      <main className={styles.mainSection} onClick={this.handleClick}>
+      <main className={styles.mainSection}>
         {orders.map(order =>
           <Order order={order} key={order.id}/>
         )}
