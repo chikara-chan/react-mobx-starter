@@ -8,7 +8,7 @@ let entry = {
 module.exports = function(env) {
   let modules
 
-  if (typeof env.module === 'string') {
+  if (env && typeof env.module === 'string') {
     modules = env.module.split(/\s+/)
     entry = modules.reduce((entry, module) => {
       entry[`${module}/bundle`] = `./src/${module}`
