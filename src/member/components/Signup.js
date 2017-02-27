@@ -1,10 +1,11 @@
 import React, {PureComponent} from 'react'
-import styles from '../sass/MainSection'
+import {Link} from 'react-router'
+import styles from '../sass/Signup'
 import {Button, Form, Input, Icon} from 'antd'
 import ajax from 'shared/ajax'
 import {getURLParams} from 'invincible'
 
-class MainSection extends PureComponent {
+class Signup extends PureComponent {
   state = {
     loading: false
   }
@@ -45,7 +46,7 @@ class MainSection extends PureComponent {
 
     return (
       <div className={styles.mainSection}>
-        <h1 className={styles.title}>采购商城</h1>
+        <h1 className={styles.title}>Signup</h1>
         <Form onSubmit={this.handleSubmit}
           className={styles.form}>
           <Form.Item className={styles.field}>
@@ -64,8 +65,9 @@ class MainSection extends PureComponent {
               }]
             })(<Input addonBefore={<Icon type="lock"/>} placeholder="密码"/>)}
           </Form.Item>
+          <Link to="/login">登录</Link>
           <Form.Item className={styles.field}>
-            <Button className={styles.button} htmlType="submit" loading={loading}>登录</Button>
+            <Button className={styles.button} htmlType="submit" loading={loading}>注册</Button>
           </Form.Item>
         </Form>
       </div>
@@ -73,4 +75,4 @@ class MainSection extends PureComponent {
   }
 }
 
-export default Form.create()(MainSection)
+export default Form.create()(Signup)

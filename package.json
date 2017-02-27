@@ -5,7 +5,9 @@
   "description": "采购商城买家版",
   "scripts": {
     "dev": "cross-env NODE_ENV=development node ./tools/server.js",
+    "dev:part": "npm run dev -- --env.module",
     "build": "cross-env NODE_ENV=production webpack --config ./tools/webpack.prod.config.js --progress",
+    "build:part": "npm run build -- --env.module",
     "clean": "rimraf ./build/*",
     "lint": "eslint . --ext .js",
     "lint:fix": "npm run lint -- --fix"
@@ -16,6 +18,7 @@
     "react": "^15.3.1",
     "react-dom": "^15.3.1",
     "react-redux": "^5.0.1",
+    "react-router": "^3.0.2",
     "redux": "^3.6.0",
     "redux-thunk": "^2.1.0",
     "superagent": "^3.3.1"
