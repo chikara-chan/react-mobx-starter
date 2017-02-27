@@ -4,10 +4,7 @@ function getOuterURL(url) {
     return `http://daily.manage.51xianqu.com${url}`
   }
 
-  // 线上环境
-  else {
-    return `http://${document.domain}${url}`
-  }
+  return `http://${document.domain}${url}`
 }
 
 export default {
