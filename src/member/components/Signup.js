@@ -9,7 +9,7 @@ class Signup extends PureComponent {
   state = {
     loading: false
   }
-1
+
   handleSubmit(e) {
     e.preventDefault()
 
