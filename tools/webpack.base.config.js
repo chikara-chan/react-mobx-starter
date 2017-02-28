@@ -1,8 +1,7 @@
 const path = require('path'),
   fs = require('fs'),
   webpack = require('webpack')
-let entry = {
-}
+let entry = {}
 
 fs.readdirSync(path.resolve(__dirname, '../src')).forEach(filename => {
   if (!~['.DS_Store', '_template', 'layout', 'shared'].indexOf(filename)) {
@@ -19,8 +18,7 @@ module.exports = function(env) {
       entry[`${module}/bundle`] = `./src/${module}`
 
       return entry
-    }, {
-    })
+    }, {})
   }
 
   return {
