@@ -1,5 +1,6 @@
 import types from '../constants/ActionTypes'
 import ajax from 'shared/ajax'
+import api from 'shared/api'
 
 function replaceOrders(orders) {
   return {
@@ -11,22 +12,22 @@ function replaceOrders(orders) {
 function fetchOrders() {
   return dispatch => {
     ajax({
-      url: '/api/user/fetchOrders',
+      url: api.queryOrders,
       type: 'get'
     }).then(res => {
       dispatch(replaceOrders(res))
     })
 
     const mock = [{
-      id: 1, name: '订单1'
-    },
-    {
-      id: 2, name: '订单2'
-    },
-    {
-      id: 3, name: '订单3'
-    }
-    ]
+      id: 1,
+      name: '订单1'
+    }, {
+      id: 2,
+      name: '订单2'
+    }, {
+      id: 3,
+      name: '订单3'
+    }]
 
     dispatch(replaceOrders(mock))
   }
