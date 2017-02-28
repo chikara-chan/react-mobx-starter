@@ -65,7 +65,7 @@ class Signup extends PureComponent {
               }]
             })(<Input addonBefore={<Icon type="lock"/>} placeholder="密码"/>)}
           </Form.Item>
-          <Link to="/login">登录</Link>
+          <Link to="/">登录</Link>
           <Form.Item className={styles.field}>
             <Button className={styles.button} htmlType="submit" loading={loading}>注册</Button>
           </Form.Item>
