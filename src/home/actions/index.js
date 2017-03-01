@@ -2,37 +2,35 @@ import types from '../constants/ActionTypes'
 import ajax from 'shared/ajax'
 import api from 'shared/api'
 
-function replaceOrders(orders) {
+function replaceShops(shops) {
   return {
-    type: types.REPLACE_ORDERS,
-    orders
+    type: types.REPLACE_SHOPS,
+    shops
   }
 }
 
-function fetchOrders() {
+function fetchShops() {
   return dispatch => {
     ajax({
-      url: api.queryOrders,
+      url: api.queryShops,
       type: 'get'
     }).then(res => {
-      dispatch(replaceOrders(res))
+      dispatch(replaceShops(res))
     })
 
-    const mock = [{
-      id: 1,
-      name: '订单1'
-    }, {
-      id: 2,
-      name: '订单2'
-    }, {
-      id: 3,
-      name: '订单3'
-    }]
+    const mock = []
 
-    dispatch(replaceOrders(mock))
+    for (let i = 1; i < 20; i++) {
+      mock.push({
+        id: i,
+        name: `店铺${i}`
+      })
+    }
+
+    dispatch(replaceShops(mock))
   }
 }
 
 export default {
-  fetchOrders
+  fetchShops
 }

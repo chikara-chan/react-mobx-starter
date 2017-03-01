@@ -15,10 +15,12 @@ class MainSection extends PureComponent {
 
     return (
       <div className={styles.mainSection}>
-        <Button onClick={this.handleClick}>Fetch Orders</Button>
-        {orders.map(order =>
-          <Order order={order} key={order.id}/>
-        )}
+        <div className={styles.container}>
+          <Button onClick={this.handleClick}>Fetch Orders</Button>
+          {orders.map(order =>
+            <Order order={order} key={order.id}/>
+          )}
+        </div>
       </div>
     )
   }

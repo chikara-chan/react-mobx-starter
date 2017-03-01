@@ -1,4 +1,22 @@
 @import '../../shared/mixins';
 
 .main-section {
+  .container {
+    max-width: 1230px;
+    margin: 0 auto;
+    padding: 0 15px;
+    .scroll {
+      padding-bottom: 20px;
+      .loader {
+        @include reset-button($primary);
+        @include border();
+        padding: 5px 10px;
+        color: $color;
+        clear: both;
+        display: table;
+        margin: 0 auto;
+        max-width: 150px;
+      }
+    }
+  }
 }
