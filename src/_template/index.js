@@ -15,27 +15,5 @@ render(
 )
 
 if (module.hot) {
-  module.hot.accept('../layout/containers/Root', () => {
-    const NextLayout = require('../layout/containers/Root')
-
-    render(
-      <NextLayout store={store}>
-        <App/>
-      </NextLayout>,
-      document.getElementById('root')
-    )
-  })
-  module.hot.accept('./containers/App', () => {
-    const NextApp = require('./containers/App')
-
-    render(
-      <Layout store={store}>
-        <NextApp/>
-      </Layout>,
-      document.getElementById('root')
-    )
-  })
-  module.hot.accept('./reducers', () => {
-    store.replaceReducer(require('./reducers'))
-  })
+  module.hot.accept()
 }
