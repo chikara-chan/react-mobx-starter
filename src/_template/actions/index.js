@@ -27,7 +27,7 @@ function fetchOrders() {
       })
     }
 
-    dispatch(replaceShops(mock))
+    dispatch(replaceOrders(mock))
   }
 }
 

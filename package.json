@@ -2,7 +2,7 @@
   "private": true,
   "name": "b2b-buyer",
   "version": "1.0.0",
-  "description": "采购商城买家版",
+  "description": "采购商城卖家版",
   "scripts": {
     "dev": "cross-env NODE_ENV=development node ./tools/server.js",
     "dev:part": "npm run dev -- --env.module",

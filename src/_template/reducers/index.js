@@ -1,9 +1,7 @@
 import {combineReducers} from 'redux'
 import types from '../constants/ActionTypes'
 
-const initialOrders = []
-
-function orders(state = initialOrders, action) {
+function orders(state = [], action) {
   switch (action.type) {
     case types.REPLACE_ORDERS:
       return action.orders

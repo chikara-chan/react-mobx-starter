@@ -1,7 +1,6 @@
 import React, {PureComponent} from 'react'
 import styles from '../sass/Header'
-import Shop from './Shop'
-import {Button, Row, Col, Icon} from 'antd'
+import {Icon} from 'antd'
 
 class Header extends PureComponent {
   render() {

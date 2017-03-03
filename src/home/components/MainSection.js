@@ -2,7 +2,7 @@ import React, {PureComponent} from 'react'
 import InfiniteScroll from 'react-infinite-scroller'
 import styles from '../sass/MainSection'
 import Shop from './Shop'
-import {Button, Row, Col} from 'antd'
+import {Row, Col} from 'antd'
 
 class MainSection extends PureComponent {
   state = {
@@ -11,6 +11,7 @@ class MainSection extends PureComponent {
 
   loadShops() {
     let {shops} = this.state
+
     for (let i = 0; i < 3; i++) {
       shops = shops.concat({
         id: Date.now(),
@@ -23,7 +24,7 @@ class MainSection extends PureComponent {
   }
 
   render() {
-    // const {shops} = this.props
+    // Const {shops} = this.props
     const {shops} = this.state
 
     return (

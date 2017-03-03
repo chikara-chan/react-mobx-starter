@@ -8,7 +8,9 @@ class Shop extends PureComponent {
 
     return (
       <div className={styles.shop}>
-        <Card className={styles.card} bodyStyle={{ padding: 0 }}>
+        <Card className={styles.card} bodyStyle={{
+          padding: 0
+        }}>
           <Row>
             <Col className={styles.colLeft} span={8}>
               <img className={styles.img} src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1488355871917&di=35cd57264854974aed804faf63d21d42&imgtype=0&src=http%3A%2F%2Fimg2.a0bi.com%2Fupload%2Fttq%2F20160125%2F1453690806219_middle.png"/>
