@@ -1,0 +1,11 @@
+@import '../../shared/mixins';
+
+.app {
+  min-height: calc(100vh - 50px);
+}
+
+@media (max-width: 767px) {
+  .app {
+    min-height: calc(100vh - 100px);
+  }
+}
