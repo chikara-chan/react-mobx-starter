@@ -4,7 +4,7 @@ const path = require('path'),
 let entry = {}
 
 fs.readdirSync(path.resolve(__dirname, '../src')).forEach(filename => {
-  if (!~['.DS_Store', '_template', 'layout', 'shared'].indexOf(filename)) {
+  if (!~['.DS_Store', '_template_redux', '_template_mobx', 'layout', 'shared'].indexOf(filename)) {
     entry[`${filename}/bundle`] = `./src/${filename}`
   }
 })
