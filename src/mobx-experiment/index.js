@@ -1,15 +1,15 @@
 import React from 'react'
 import {render} from 'react-dom'
-import configureStore from '../layout/store/configureStore'
+import {Provider} from 'mobx-react'
 import Layout from '../layout/containers/Layout'
-import reducers from './reducers'
 import App from './containers/App'
-
-const store = configureStore(reducers)
+import stores from './stores'
 
 render(
   <Layout>
-    <App/>
+    <Provider {...stores}>
+      <App/>
+    </Provider>
   </Layout>,
   document.getElementById('root')
 )

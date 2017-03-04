@@ -3,21 +3,17 @@ import styles from '../sass/MainSection'
 import Order from './Order'
 import {Button} from 'antd'
 
+@inject('orderStore')
+@observer
 class MainSection extends PureComponent {
-  handleClick() {
-    const {actions} = this.props
-
-    actions.fetchOrders()
-  }
-
   render() {
-    const {orders} = this.props
+    const {orderStore} = this.props
 
     return (
       <div className={styles.mainSection}>
         <div className={styles.container}>
-          <Button onClick={this.handleClick}>Fetch Orders</Button>
-          {orders.map(order =>
+          <Button>Fetch Orders</Button>
+          {orderStore.orders.map(order =>
             <Order order={order} key={order.id}/>
           )}
         </div>
