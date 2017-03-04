@@ -5,14 +5,29 @@
   transform: translate(0, -50%);
   .title {
     text-align: center;
+    padding: 0 0 50px 0;
+    font-size: 40px;
   }
   .form {
-    margin: 0 auto;
-    max-width: 300px;
-    .field {
-      .button {
-        @include reset-button($primary);
-        width: 100%;
+    width: 100%;
+    .container {
+      width: 378px;
+      background: #FFFFFF;
+      box-shadow: 0 2px 8px 0 rgba(0,0,0,0.20);
+      border-radius: 4px;
+      display: table;
+      margin: 0 auto;
+      padding: 37px 88px;
+      .field {
+        margin-bottom: 15px;
+        :global(.ant-form-item-control) {
+          line-height: $line-height;
+        }
+        .button {
+          @include reset-button($primary);
+          width: 100%;
+          font-size: $size;
+        }
       }
     }
   }

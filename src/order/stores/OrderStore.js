@@ -9,7 +9,6 @@ class OrderStore {
     id: 2,
     name: 'order2'
   }]
-
   @computed get length() {
     return this.orders.length
   }

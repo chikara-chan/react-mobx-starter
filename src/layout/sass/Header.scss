@@ -1,29 +1,21 @@
 @import '../../shared/mixins';
 
 .header {
-  line-height: 50px;
-  background: $primary;
+  @include fixed(0 0 auto 224px 1);
+  @include border(bottom);
+  line-height: 55px;
+  height: 56px;
+  background: #fff;
   padding: 0 20px;
+  overflow: hidden;
 
   .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    .col-left {
-      .link {
-        color: $color;
-        margin: 0 15px;
-        &.active {
-          font-weight: 900;
-        }
-      }
-    }
+    text-align: right;
 
-    .col-right {
-      text-align: right;
-      .link {
-        color: $color;
-        margin: 0 15px;
-      }
+    .link {
+      color: $color-light;
+      font-size: $size-lg;
+      margin: 0 15px;
     }
   }
 }
