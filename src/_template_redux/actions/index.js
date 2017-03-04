@@ -17,17 +17,6 @@ function fetchOrders() {
     }).then(res => {
       dispatch(replaceOrders(res))
     })
-
-    const mock = []
-
-    for (let i = 1; i < 10; i++) {
-      mock.push({
-        id: i,
-        name: `订单${i}`
-      })
-    }
-
-    dispatch(replaceOrders(mock))
   }
 }
 
