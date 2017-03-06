@@ -1,4 +1,22 @@
 @import '../../../shared/mixins';
 
 .main-section {
+  padding: 30px 40px;
+  .title {
+    line-height: 40px;
+    font-size: $size-lg;
+  }
+  .content {
+    margin-left: 60px;
+    line-height: 50px;
+    .field {
+      max-width: 230px;
+      .desc {
+        margin-right: 20px;
+      }
+      .link {
+        float: right;
+      }
+    }
+  }
 }

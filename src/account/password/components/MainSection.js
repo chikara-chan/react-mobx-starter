@@ -1,30 +1,88 @@
 import React, {PureComponent} from 'react'
-import {observer, inject} from 'mobx-react'
+import {Button, Form, Input, message} from 'antd'
 import styles from '../sass/MainSection'
-import Order from './Order'
-import {Button} from 'antd'
+import ajax from 'shared/ajax'
 
-@inject('orderStore')
-@observer
 class MainSection extends PureComponent {
-  handleClick() {
-    const {orderStore} = this.props
+  handleSubmit(e) {
+    e.preventDefault()
 
-    orderStore.fetchOrders()
+    const {form} = this.props
+
+    form.validateFields((err, values) => {
+      if (!err) {
+        delete values.repassword
+        ajax({
+          url: '/api/login',
+          data: values
+        }).then(() => {
+          location.replace('/account.html')
+        })
+      }
+    })
+  }
+
+  checkPassword = (rule, value, callback) => {
+    const {form} = this.props
+
+    if (value && value !== form.getFieldValue('password')) {
+      callback('两次密码不相同');
+    } else {
+      callback()
+    }
   }
 
   render() {
-    const {orderStore} = this.props
+    const {form} = this.props
 
     return (
       <div className={styles.mainSection}>
-        <Button onClick={this.handleClick}>Fetch Orders</Button>
-        {orderStore.orders.map(order =>
-          <Order order={order} key={order.id}/>
-        )}
+        <Form className={styles.form}
+          onSubmit={this.handleSubmit}>
+          <Form.Item className={styles.field}
+            labelCol={{span: 10}}
+            wrapperCol={{span: 14}}
+            label="当前登录密码">
+            {form.getFieldDecorator('userName', {
+              rules: [{
+                required: true,
+                message: '必填项'
+              }]
+            })(<Input type="password" placeholder="输入当前登录密码"/>)}
+          </Form.Item>
+          <Form.Item className={styles.field}
+            labelCol={{span: 10}}
+            wrapperCol={{span: 14}}
+            label="新的登录密码">
+            {form.getFieldDecorator('password', {
+              rules: [{
+                required: true,
+                message: '必填项'
+              }]
+            })(<Input type="password" placeholder="输入新的登录密码"/>)}
+          </Form.Item>
+          <Form.Item className={styles.field}
+            labelCol={{span: 10}}
+            wrapperCol={{span: 14}}
+            label="再次输入新的登录密码">
+            {form.getFieldDecorator('repassword', {
+              rules: [{
+                required: true,
+                message: '必填项'
+              }, {
+              validator: this.checkPassword,
+              }]
+            })(<Input type="password" placeholder="再次输入新的登录密码"/>)}
+          </Form.Item>
+          <Form.Item className={styles.field}
+            wrapperCol={{span: 14, offset: 10}}>
+            <Button className={styles.submit} htmlType="submit">确定</Button>
+            <Button className={styles.button}>取消</Button>
+          </Form.Item>
+        </Form>
       </div>
     )
   }
 }
 
-export default MainSection
+export default Form.create()(MainSection)
