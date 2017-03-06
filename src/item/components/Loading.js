@@ -14,7 +14,7 @@ class Loading extends PureComponent {
   render() {
 
     const loadingStore = this.props.loadingStore;
-    var loadingTpl = loadingStore.isShowLoading ?  (
+    let loadingTpl = loadingStore.isShowLoading ?  (
       <div className={styles.loading}>
         <div className={styles.circleBack}>
           <div className={styles.img}></div>
