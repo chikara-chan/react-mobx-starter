@@ -8,6 +8,3 @@ node_modules
 bower_components
 .DS_Store
 *.lock
-
-mobx-experiment.html
-mobx-experiment

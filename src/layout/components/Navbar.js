@@ -13,23 +13,25 @@ function Navbar() {
       <Menu className={styles.menu}
         theme ="dark">
         <Menu.Item className={`${styles.item} ${isActive('/') ? styles.active : ''}`}
-          href="test"
           key="0">
           <a href="/">
             <Icon type="file-text"/>订单管理
           </a>
+          <Icon className={styles.iconRight} type="right"/>
         </Menu.Item>
         <Menu.Item className={`${styles.item} ${isActive('/commondity') ? styles.active : ''}`}
           key="1">
           <a href="/commodity">
             <Icon type="appstore-o"/>商品管理
           </a>
+          <Icon className={styles.iconRight} type="right"/>
         </Menu.Item>
         <Menu.Item className={`${styles.item} ${isActive('/account') ? styles.active : ''}`}
           key="2">
           <a href="/account">
             <Icon type="user"/>个人中心
           </a>
+          <Icon className={styles.iconRight} type="right"/>
         </Menu.Item>
       </Menu>
     </nav>

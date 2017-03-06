@@ -16,6 +16,9 @@
       &.active {
         background: #2497F0;
       }
+      .icon-right {
+        @include absolute(15px 10px 0 auto);
+      }
     }
   }
 }
