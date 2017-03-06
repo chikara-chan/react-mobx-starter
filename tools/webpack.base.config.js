@@ -57,6 +57,8 @@ module.exports = function(env) {
       'react-router': 'window.ReactRouter',
       redux: 'window.Redux',
       'react-redux': 'window.ReactRedux',
+      mobx: 'window.mobx',
+      mobxReact: 'window.mobxReact',
       superagent: 'window.superagent'
     },
     plugins: [
