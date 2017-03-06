@@ -18,7 +18,7 @@ class OrderStore {
     this.orders = orders
   }
 
-  @action async fetchOrders() {
+  async fetchOrders() {
     const res = await ajax({
       url: '/api',
       type: 'get',

@@ -1,0 +1,42 @@
+@import '../../shared/mixins';
+
+.form-section {
+  padding: 20px 0;
+  .form {
+    background: #fafafa;
+    border: 1px solid #e5e5e5;
+    padding: 16px 30px;
+    margin-bottom: 30px;
+    .item {
+      margin-right: 15px;
+      .input {
+        display: block;
+        height: 28px;
+        width: 237px;
+      }
+      :global {
+        .ant-calendar-picker-input {
+          height: 28px;
+          .ant-calendar-range-picker-input, .ant-calendar-range-picker-separator {
+            position: relative;
+            top: -1px;
+          }
+        }
+      }
+      .button {
+        @include reset-button($primary);
+        font-size: $size;
+        height: 28px;
+        width: 68px;
+        display: block;
+      }
+    }
+  }
+  .btn {
+    @include reset-button();
+    @include reset-link();
+    padding: 7px 12px;
+    margin-right: 15px;
+    display: inline-block;
+  }
+}
