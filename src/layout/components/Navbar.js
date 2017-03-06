@@ -19,16 +19,16 @@ function Navbar() {
           </a>
           <Icon className={styles.iconRight} type="right"/>
         </Menu.Item>
-        <Menu.Item className={`${styles.item} ${isActive('/commondity') ? styles.active : ''}`}
+        <Menu.Item className={`${styles.item} ${isActive('/commondity.html') ? styles.active : ''}`}
           key="1">
-          <a href="/commodity">
+          <a href="/commodity.html">
             <Icon type="appstore-o"/>商品管理
           </a>
           <Icon className={styles.iconRight} type="right"/>
         </Menu.Item>
-        <Menu.Item className={`${styles.item} ${isActive('/account') ? styles.active : ''}`}
+        <Menu.Item className={`${styles.item} ${isActive('/account.html') ? styles.active : ''}`}
           key="2">
-          <a href="/account">
+          <a href="/account.html">
             <Icon type="user"/>个人中心
           </a>
           <Icon className={styles.iconRight} type="right"/>
