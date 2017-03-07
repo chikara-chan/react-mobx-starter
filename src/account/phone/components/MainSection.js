@@ -12,7 +12,7 @@ class MainSection extends PureComponent {
 
     form.validateFields((err, values) => {
       if (!err) {
-        delete values.repassword
+        delete values.rePhone
         ajax({
           url: '/api/login',
           data: values
@@ -26,7 +26,7 @@ class MainSection extends PureComponent {
   checkPassword = (rule, value, callback) => {
     const {form} = this.props
 
-    if (value && value !== form.getFieldValue('password')) {
+    if (value && value !== form.getFieldValue('phone')) {
       callback('两次输入新手机不相同');
     } else {
       callback()
@@ -48,36 +48,36 @@ class MainSection extends PureComponent {
             labelCol={{span: 10}}
             wrapperCol={{span: 14}}
             label="当前通知手机">
-            {form.getFieldDecorator('userName', {
+            {form.getFieldDecorator('oldPhone', {
               rules: [{
                 required: true,
                 message: '必填项'
               }]
-            })(<Input type="password" placeholder="输入当前通知手机"/>)}
+            })(<Input type="number" placeholder="输入当前通知手机"/>)}
           </Form.Item>
           <Form.Item className={styles.field}
             labelCol={{span: 10}}
             wrapperCol={{span: 14}}
             label="新的通知手机">
-            {form.getFieldDecorator('password', {
+            {form.getFieldDecorator('phone', {
               rules: [{
                 required: true,
                 message: '必填项'
               }]
-            })(<Input type="password" placeholder="输入新的通知手机"/>)}
+            })(<Input type="number" placeholder="输入新的通知手机"/>)}
           </Form.Item>
           <Form.Item className={styles.field}
             labelCol={{span: 10}}
             wrapperCol={{span: 14}}
             label="再次输入新的通知手机">
-            {form.getFieldDecorator('repassword', {
+            {form.getFieldDecorator('rePhone', {
               rules: [{
                 required: true,
                 message: '必填项'
               }, {
               validator: this.checkPassword,
               }]
-            })(<Input type="password" placeholder="再次输入新的通知手机"/>)}
+            })(<Input type="number" placeholder="再次输入新的通知手机"/>)}
           </Form.Item>
           <Form.Item className={styles.field}
             wrapperCol={{span: 14, offset: 10}}>

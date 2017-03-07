@@ -48,7 +48,7 @@ class MainSection extends PureComponent {
             labelCol={{span: 10}}
             wrapperCol={{span: 14}}
             label="当前登录密码">
-            {form.getFieldDecorator('userName', {
+            {form.getFieldDecorator('oldPassword', {
               rules: [{
                 required: true,
                 message: '必填项'
