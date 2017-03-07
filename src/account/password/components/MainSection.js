@@ -1,4 +1,5 @@
 import React, {PureComponent} from 'react'
+import {hashHistory} from 'react-router'
 import {Button, Form, Input, message} from 'antd'
 import styles from '../sass/MainSection'
 import ajax from 'shared/ajax'
@@ -32,6 +33,10 @@ class MainSection extends PureComponent {
     }
   }
 
+  handleCancel() {
+    hashHistory.push('/')
+  }
+
   render() {
     const {form} = this.props
 
@@ -43,7 +48,7 @@ class MainSection extends PureComponent {
             labelCol={{span: 10}}
             wrapperCol={{span: 14}}
             label="当前登录密码">
-            {form.getFieldDecorator('userName', {
+            {form.getFieldDecorator('oldPassword', {
               rules: [{
                 required: true,
                 message: '必填项'
@@ -77,7 +82,7 @@ class MainSection extends PureComponent {
           <Form.Item className={styles.field}
             wrapperCol={{span: 14, offset: 10}}>
             <Button className={styles.submit} htmlType="submit">确定</Button>
-            <Button className={styles.button}>取消</Button>
+            <Button className={styles.button} onClick={this.handleCancel}>取消</Button>
           </Form.Item>
         </Form>
       </div>

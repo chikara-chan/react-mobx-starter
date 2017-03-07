@@ -24,7 +24,7 @@ class MainSection extends PureComponent {
           <div className={styles.field}>
             <span className={styles.desc}>手机号码</span>
             <span className={styles.desc}>{'133*****7989'}</span>
-            <Link className={styles.link} to="/phone">修改密码</Link>
+            <Link className={styles.link} to="/phone">修改手机</Link>
           </div>
         </div>
       </div>
