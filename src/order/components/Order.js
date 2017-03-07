@@ -1,4 +1,5 @@
 import React, {PureComponent} from 'react'
+import {findDOMNode} from 'react-dom'
 import {observer, inject} from 'mobx-react'
 import styles from '../sass/Order'
 import SubOrder from './SubOrder'
@@ -13,6 +14,26 @@ class Order extends PureComponent {
     orderStore.handleConfirm({
       bizOrder: order.bizOrder
     })
+  }
+
+  handlePrint() {
+    const el = document.createElement('iframe'),
+      css = document.getElementById('printCopy'),
+      preTitle = document.title
+    let pri
+
+    el.style.visible = 'invisible'
+    el.style.width = '1000px'
+    document.body.appendChild(el)
+    pri = el.contentWindow
+    pri.document.body.innerHTML = findDOMNode(this).outerHTML
+    pri.document.head.innerHTML = css.outerHTML
+    setTimeout(() => {
+      document.title = '采购单'
+      pri.print()
+      document.title = preTitle
+      el.parentNode.removeChild(el)
+    }, 200)
   }
 
   render() {
@@ -56,7 +77,7 @@ class Order extends PureComponent {
           <span className={styles.colRight}>
             <a className={styles.btnPrimary} onClick={this.handleConfirm} href="javascript:void(0)">确认发货</a>
             <a className={styles.btn} href="javascript:void(0)">导出订单</a>
-            <a className={styles.btn} href="javascript:void(0)">打印订单</a>
+            <a className={styles.btn} href="javascript:void(0)" onClick={this.handlePrint}>打印订单</a>
           </span>
         </div>
       </div>

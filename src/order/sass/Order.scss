@@ -10,7 +10,8 @@
     background: #D3E9FA;
     padding: 10px 24px;
     .item {
-      line-height: 30px
+      line-height: 30px;
+      margin-right: 10px;
     }
     .status {
       @include absolute(20px 17px auto auto);
@@ -43,6 +44,9 @@
       }
     }
     .col-right {
+      @media print {
+        display: none;
+      }
       float: right;
       .btn {
         @include reset-link();

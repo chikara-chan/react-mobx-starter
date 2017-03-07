@@ -1,4 +1,5 @@
 import React, {PureComponent} from 'react'
+import {hashHistory} from 'react-router'
 import {Button, Form, Input, message} from 'antd'
 import styles from '../sass/MainSection'
 import ajax from 'shared/ajax'
@@ -30,6 +31,10 @@ class MainSection extends PureComponent {
     } else {
       callback()
     }
+  }
+
+  handleCancel() {
+    hashHistory.push('/')
   }
 
   render() {
@@ -77,7 +82,7 @@ class MainSection extends PureComponent {
           <Form.Item className={styles.field}
             wrapperCol={{span: 14, offset: 10}}>
             <Button className={styles.submit} htmlType="submit">确定</Button>
-            <Button className={styles.button}>取消</Button>
+            <Button className={styles.button} onClick={this.handleCancel}>取消</Button>
           </Form.Item>
         </Form>
       </div>
