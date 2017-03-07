@@ -19,7 +19,7 @@ function Navbar() {
           </a>
           <Icon className={styles.iconRight} type="right"/>
         </Menu.Item>
-        <Menu.Item className={`${styles.item} ${isActive('/commondity.html') ? styles.active : ''}`}
+        <Menu.Item className={`${styles.item} ${isActive('/commodity.html') ? styles.active : ''}`}
           key="1">
           <a href="/commodity.html">
             <Icon type="appstore-o"/>商品管理
