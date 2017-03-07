@@ -6,8 +6,9 @@ const FormItem = Form.Item;
 
 
 
-
-@inject('itemStore','loadingStore','breadcrumbStore')
+@inject('itemStore')
+@inject('loadingStore')
+@inject('breadcrumbStore')
 @observer
 class ItemEdit extends PureComponent {
   handleSubmit(e) {
@@ -43,7 +44,6 @@ class ItemEdit extends PureComponent {
 
     const {getFieldDecorator} = this.props.form;
     const itemStore = this.props.itemStore;
-
 
     // 代理一下方可调试
     const uploadProps = {
