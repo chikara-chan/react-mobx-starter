@@ -12,15 +12,7 @@ render(
   <AppContainer>
     <Layout>
       <Provider {...stores}>
-        <BreadcrumbLayout titles={[{
-          name: '标题1',
-          href: '/'
-        }, {
-          name: '标题2',
-          href: '/'
-        }]}>
-          <App/>
-        </BreadcrumbLayout>
+        <App />
       </Provider>
     </Layout>
   </AppContainer>,

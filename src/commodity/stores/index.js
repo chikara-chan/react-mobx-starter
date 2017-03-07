@@ -6,10 +6,10 @@ import BreadcrumbStore from './BreadcrumbStore'
 
 useStrict(true)
 
-window.selfStore = {
+window.Stores = {
   itemStore: new ItemStore(),
   loadingStore: new LoadingStore(),
   breadcrumbStore: new BreadcrumbStore()
 }
 
-export default selfStore
+export default Stores
