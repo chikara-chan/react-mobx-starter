@@ -5,25 +5,16 @@ import {Button, Form, Input, Select, DatePicker} from 'antd'
 const FormItem = Form.Item;
 const Option = Select.Option;
 
+@inject('queryStore')
 @observer
 class FormSection extends PureComponent {
   handleSubmit(e) {
-    e.preventDefault()
+    e.preventDefault();
 
-    const {form, tabsStore, orderStore} = this.props
-
+    const {form,queryStore} = this.props
     form.validateFields((err, values) => {
       if (!err) {
-        if (values.rangeTime) {
-          values.start = values.rangeTime[0]._d.getTime()
-          values.end = values.rangeTime[0]._d.getTime()
-        }
-        delete values.rangeTime
-        console.log(values)
-        orderStore.fetchOrders({
-          key: tabsStore.key,
-          ...values
-        })
+        queryStore.replaceQueryParams(values);
       }
     })
   }
@@ -38,13 +29,17 @@ class FormSection extends PureComponent {
           className={styles.form}
           inline>
           <FormItem className={styles.item}>
-            <Select size="default"
-                style={{ width: 120 }}
-                placeholder="请选择商品状态"
-              >
-              <Option value="jack">未上架</Option>
-              <Option value="lucy">在售</Option>
-            </Select>
+            {getFieldDecorator('itemStatus', {
+            })(
+              <Select size="default"
+                  style={{ width: 120 }}
+                  placeholder="请选择商品状态"
+                >
+                <Option value="0,10,20,30,40,100">全部</Option>
+                <Option value="100">在售</Option>
+                <Option value="0,10,20,30,40">已下架</Option>
+              </Select>
+            )}
           </FormItem>
           <FormItem>
             {getFieldDecorator('itemId', {
@@ -52,14 +47,15 @@ class FormSection extends PureComponent {
               <Input size="default" placeholder="请输入商品ID" />
             )}
           </FormItem>
+
           <FormItem>
-            {getFieldDecorator('name', {
+            {getFieldDecorator('searchKey', {
             })(
               <Input size="default" placeholder="请输入商品名称" />
             )}
           </FormItem>
           <FormItem>
-            {getFieldDecorator('code', {
+            {getFieldDecorator('barcode', {
             })(
               <Input size="default" placeholder="请输入商品条形码" />
             )}

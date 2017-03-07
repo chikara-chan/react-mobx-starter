@@ -10,5 +10,6 @@ function getOuterURL(url) {
 export default {
   queryOrders: getOuterURL('/api/queryOrders'),
   queryItem: getOuterURL('/itemcenter/seller/open/getItemsByIds.do'),
-  uploadImage:getOuterURL('/itemcenter/upload/server?notParseJpg=1')
+  uploadImage:getOuterURL('/itemcenter/upload/server?notParseJpg=1'),
+  queryItemList:getOuterURL('/itemcenter/seller/item/list.jsonp')
 }
