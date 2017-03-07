@@ -41,9 +41,12 @@ class Login extends PureComponent {
               {form.getFieldDecorator('userName', {
                 rules: [{
                   required: true,
-                  message: '用户名不能为空'
+                  message: '手机号不能为空'
+                }, {
+                  pattern: /^\d{11}$/,
+                  message: '请输入正确格式'
                 }]
-              })(<Input addonBefore={<Icon type="user"/>} placeholder="手机号"/>)}
+              })(<Input addonBefore={<Icon type="user"/>} maxLength="11" placeholder="手机号"/>)}
             </Form.Item>
             <Form.Item className={styles.field}>
               {form.getFieldDecorator('password', {

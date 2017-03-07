@@ -23,7 +23,7 @@ class MainSection extends PureComponent {
     })
   }
 
-  checkPassword = (rule, value, callback) => {
+  checkPhone = (rule, value, callback) => {
     const {form} = this.props
 
     if (value && value !== form.getFieldValue('phone')) {
@@ -52,8 +52,11 @@ class MainSection extends PureComponent {
               rules: [{
                 required: true,
                 message: '必填项'
+              }, {
+                pattern: /^\d{11}$/,
+                message: '请输入正确格式'
               }]
-            })(<Input type="number" placeholder="输入当前通知手机"/>)}
+            })(<Input maxLength="11" placeholder="输入当前通知手机"/>)}
           </Form.Item>
           <Form.Item className={styles.field}
             labelCol={{span: 10}}
@@ -63,8 +66,11 @@ class MainSection extends PureComponent {
               rules: [{
                 required: true,
                 message: '必填项'
+              }, {
+                pattern: /^\d{11}$/,
+                message: '请输入正确格式'
               }]
-            })(<Input type="number" placeholder="输入新的通知手机"/>)}
+            })(<Input maxLength="11" placeholder="输入新的通知手机"/>)}
           </Form.Item>
           <Form.Item className={styles.field}
             labelCol={{span: 10}}
@@ -75,9 +81,9 @@ class MainSection extends PureComponent {
                 required: true,
                 message: '必填项'
               }, {
-              validator: this.checkPassword,
+              validator: this.checkPhone,
               }]
-            })(<Input type="number" placeholder="再次输入新的通知手机"/>)}
+            })(<Input maxLength="11" placeholder="再次输入新的通知手机"/>)}
           </Form.Item>
           <Form.Item className={styles.field}
             wrapperCol={{span: 14, offset: 10}}>
