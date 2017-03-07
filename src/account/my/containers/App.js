@@ -8,7 +8,7 @@ class App extends PureComponent {
     return (
       <BreadcrumbLayout titles={[{
         name: '个人中心',
-        href: '/account.html'
+        href: '#/'
       }]}>
         <div className={styles.app}>
           <MainSection/>
