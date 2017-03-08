@@ -9,9 +9,14 @@ import {Button, Menu, Badge} from 'antd'
 @observer
 class TabsSection extends PureComponent {
   handleClick(e) {
-    const {tabsStore} = this.props
+    const {tabsStore, orderStore} = this.props
 
     tabsStore.replaceKey(e.key)
+    orderStore.updatePagination({
+      pageNum: 1
+    })
+    orderStore.replaceOrders([])
+    orderStore.fetchOrders()
   }
 
   render() {
@@ -25,15 +30,15 @@ class TabsSection extends PureComponent {
           mode="horizontal">
           <Menu.Item className={styles.item}
             key="0">
-              待发货<Badge className={styles.badge} count={orderStore.count}/>
+              待发货<Badge className={styles.badge} count={tabsStore.key === '0' && orderStore.pagination.total}/>
           </Menu.Item>
           <Menu.Item className={styles.item}
             key="1">
-              已发货<Badge className={styles.badge} count={orderStore.count}/>
+              已发货<Badge className={styles.badge} count={tabsStore.key === '1' && orderStore.pagination.total}/>
           </Menu.Item>
           <Menu.Item className={styles.item}
             key="2">
-              已取消<Badge className={styles.badge} count={orderStore.count}/>
+              已取消<Badge className={styles.badge} count={tabsStore.key === '2' && orderStore.pagination.total}/>
           </Menu.Item>
         </Menu>
       </div>

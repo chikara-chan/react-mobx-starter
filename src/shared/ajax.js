@@ -13,14 +13,15 @@ function ajax(options) {
   const defaults = {
     url: null,
     type: 'post',
-    data: {}
+    data: {},
+    raw: false  // 默认返回接口字段entry, 设置raw为true，返回全部字段
   }
   let promise, action
 
   options = Object.assign({}, defaults, options)
   promise = request[options.type](options.url).withCredentials()
   Object.keys(options).forEach(key => {
-    if (!key.match(/url|type|data/)) {
+    if (!key.match(/url|type|data|raw/)) {
       promise.set(key, options[key])
     }
   })
@@ -29,8 +30,16 @@ function ajax(options) {
   return new Promise((resolve, reject) => {
     promise[action](options.data).then(res => {
       if (!res.body.status) {
+        if (res.body.responseCode === 10212) {
+          // location = '/member.html?redirect=' + encodeURIComponent(location.href)
+        }
         message.error(res.body.message)
         reject(new Error(res.body.message))
+
+        return
+      }
+      if (options.raw) {
+        resolve(res.body)
 
         return
       }

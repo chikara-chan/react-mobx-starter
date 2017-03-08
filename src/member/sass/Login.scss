@@ -1,7 +1,7 @@
 @import '../../shared/mixins';
 
 .main-section {
-  @include absolute(50% 0 auto 0);
+  @include absolute(45% 0 auto 0);
   transform: translate(0, -50%);
   .title {
     text-align: center;
@@ -12,7 +12,7 @@
     width: 100%;
     .container {
       width: 378px;
-      background: #FFFFFF;
+      background: rgba(255, 255, 255, 0.7);
       box-shadow: 0 2px 8px 0 rgba(0,0,0,0.20);
       border-radius: 4px;
       display: table;
@@ -27,6 +27,7 @@
           @include reset-button($primary);
           width: 100%;
           font-size: $size;
+          margin-top: 10px;
         }
       }
     }

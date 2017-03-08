@@ -5,7 +5,14 @@ import styles from '../sass/Order'
 import SubOrder from './SubOrder'
 import {Row, Col} from 'antd'
 
+const mapTabsKey = {
+  0: '待发货',
+  1: '已发货',
+  2: '已取消'
+}
+
 @inject('orderStore')
+@inject('tabsStore')
 @observer
 class Order extends PureComponent {
   handleConfirm() {
@@ -37,17 +44,17 @@ class Order extends PureComponent {
   }
 
   render() {
-    const {order} = this.props
+    const {order, tabsStore} = this.props
 
     return (
       <div className={styles.order}>
         <div className={styles.header}>
           <span className={styles.item}>订单编号: {order.bizOrderId}</span>
-          <span className={styles.item}>下单时间: {order.orderCreate}</span><br/>
-          <span className={styles.item}>配送地址: {'蒋村商务中心'}</span>
-          <span className={styles.item}>联系人: {'陈先生'}</span>
-          <span className={styles.item}>联系电话: {'13336971320'}</span>
-          <span className={styles.status}>{'待发货'}</span>
+          <span className={styles.item}>下单时间: {order.gmtCreate}</span><br/>
+          <span className={styles.item}>配送地址: {order.addressSnapshot}</span>
+          <span className={styles.item}>联系人: {order.buyerNick}</span>
+          <span className={styles.item}>联系电话: {order.mobile}</span>
+          <span className={styles.status}>{mapTabsKey[tabsStore.key]}</span>
         </div>
         <div className={styles.table}>
           <Row>
@@ -59,20 +66,20 @@ class Order extends PureComponent {
                 <Col sm={3}>单价</Col>
                 <Col sm={3}>数量</Col>
               </Row>
-              {order.bizOrder.subOrders.map(subOrder => <SubOrder subOrder={subOrder}/>)}
+              {order.subOrders.map(subOrder => <SubOrder subOrder={subOrder}/>)}
             </Col>
             <Col sm={4}>
               <div className={`${styles.th} ${styles.thRight}`}>订单备注</div>
               <div className={styles.tr}>
-                {'老板，麻烦开发票。发票抬头：杭州抢趣网络科技有限公司。谢谢 ~'}
+                {order.comment}
               </div>
             </Col>
           </Row>
         </div>
         <div className={styles.footer}>
           <span className={styles.colReft}>
-            共 <span className={styles.strong}>{'99'}</span> 件商品,
-            合计 ￥<span className={styles.strong}>{'100万'}</span>
+            共 <span className={styles.strong}>{order.buyAmount}</span> 件商品,
+            合计 ￥<span className={styles.strong}>{order.totalPrice}</span>
           </span>
           <span className={styles.colRight}>
             <a className={styles.btnPrimary} onClick={this.handleConfirm} href="javascript:void(0)">确认发货</a>
