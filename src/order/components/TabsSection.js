@@ -4,8 +4,7 @@ import styles from '../sass/TabsSection'
 import Order from './Order'
 import {Button, Menu, Badge} from 'antd'
 
-@inject('tabsStore')
-@inject('orderStore')
+@inject('tabsStore', 'orderStore')
 @observer
 class TabsSection extends PureComponent {
   handleClick(e) {
