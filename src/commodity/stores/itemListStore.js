@@ -11,7 +11,7 @@ class ItemListStore {
 
   @observable totalCount = 0;
 
-  @observable selectedList = [];
+
 
   @action replaceList(newList) {
     this.itemList = newList;
@@ -21,9 +21,7 @@ class ItemListStore {
     this.totalCount = newCount;
   }
 
-  @action replaceSelectedList(newList) {
-    this.selectedList = newList;
-  }
+
 
 }
 

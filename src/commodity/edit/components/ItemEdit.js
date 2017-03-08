@@ -2,8 +2,8 @@ import React, {PureComponent} from 'react'
 import {observer, inject} from 'mobx-react'
 import styles from '../sass/MainSection'
 import {Form, Tooltip, Icon,Row, Col,Button,Input,Upload} from 'antd';
-const FormItem = Form.Item;
 
+const FormItem = Form.Item;
 
 
 @inject('itemStore')
@@ -18,7 +18,8 @@ class ItemEdit extends PureComponent {
     form.validateFields((err, values) => {
       if (!err) {
         // do sth
-        itemStore.save(values);
+        itemStore.replaceItem(values);
+        itemStore.saveItem();
       }
     })
   }
@@ -26,17 +27,15 @@ class ItemEdit extends PureComponent {
     const loadingStore = this.props.loadingStore;
     const itemStore = this.props.itemStore;
     const breadcrumbStore = this.props.breadcrumbStore;
+    const itemId = location.hash.substr(7);
     loadingStore.switchLoading(true);
-    itemStore.fetchItem(function(){
+    itemStore.fetchItem(itemId,function(){
       loadingStore.switchLoading(false);
     });
-    breadcrumbStore.replaceConfig([{
-        name: '商品管理',
-        href: '/'
-      }, {
-        name: '商品编辑',
-        href: '/'
-      }])
+  }
+
+  goBack(){
+    history.go(-1);
   }
 
 
@@ -44,6 +43,7 @@ class ItemEdit extends PureComponent {
 
     const {getFieldDecorator} = this.props.form;
     const itemStore = this.props.itemStore;
+
 
     // 代理一下方可调试
     const uploadProps = {
@@ -131,7 +131,7 @@ class ItemEdit extends PureComponent {
                     <label>商品规格/单位：</label>
                   </Col>
                   <Col span={14}>
-                    1000g / 份
+                    {itemStore.itemInfo.property}
                   </Col>
                 </Row>
               </li>
@@ -141,7 +141,7 @@ class ItemEdit extends PureComponent {
                     <label>所属类目：</label>
                   </Col>
                   <Col span={14}>
-                    四季鲜果
+                    {itemStore.itemInfo.catName}
                   </Col>
                 </Row>
               </li>
@@ -151,7 +151,7 @@ class ItemEdit extends PureComponent {
                     <label>商品条形码：</label>
                   </Col>
                   <Col span={14}>
-                    0523434234
+                    {itemStore.itemInfo.barcode}
                   </Col>
                 </Row>
               </li>
@@ -161,7 +161,7 @@ class ItemEdit extends PureComponent {
                     <label>商品ID：</label>
                   </Col>
                   <Col span={14}>
-                    12223425345
+                    {itemStore.itemInfo.id}
                   </Col>
                 </Row>
               </li>
@@ -172,7 +172,8 @@ class ItemEdit extends PureComponent {
                   </Col>
                   <Col span={14}>
                     <FormItem className={styles.noBottomSpace}>
-                      {getFieldDecorator('total', {
+                      {getFieldDecorator('quantity', {
+                        initialValue:itemStore.itemInfo.quantity,
                         rules: [{ required: true, message: '请输入商品总库存' }],
                       })(
                         <Input  placeholder="商品总库存" />
@@ -188,7 +189,8 @@ class ItemEdit extends PureComponent {
                   </Col>
                   <Col span={14}>
                     <FormItem className={styles.noBottomSpace}>
-                    {getFieldDecorator('least', {
+                    {getFieldDecorator('orderLimit', {
+                      initialValue:itemStore.itemInfo.orderLimit || 1,
                       rules: [{ required: true, message: '请输入最小起订量' }],
                     })(
                       <Input  placeholder="最小起订量" />
@@ -205,7 +207,7 @@ class ItemEdit extends PureComponent {
                   </Col>
                   <Col span={14}>
                     <Button type="primary" htmlType="submit">保 存</Button>
-                    <Button>取 消</Button>
+                    <Button onClick={this.goBack}>取 消</Button>
                   </Col>
                 </Row>
               </li>

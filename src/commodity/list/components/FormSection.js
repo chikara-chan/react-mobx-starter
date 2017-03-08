@@ -22,6 +22,8 @@ class FormSection extends PureComponent {
   render() {
     const {form} = this.props
     const getFieldDecorator = form.getFieldDecorator;
+    // 初始化查询
+    this.props.queryStore.replaceQueryParams();
 
     return (
       <div className={styles.formSection}>
