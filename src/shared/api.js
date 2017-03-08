@@ -13,7 +13,7 @@ export default {
   queryOrderList: getOuterURL('/trade/caihaohuo/order/queryOrderList'),
   sendOrder: getOuterURL('/trade/caihaohuo/order/sendOrder'),
   queryItem: getOuterURL('/itemcenter/seller/open/getItemsByIds.do'),
-  uploadImage:getOuterURL('/itemcenter/upload/server?notParseJpg=1'),
+  uploadImage:getOuterURL('/itemcenter/upload/server?minWidth=750&wDivH-min=1.0&wDivH-max=1.0'),
   queryItemList:getOuterURL('/itemcenter/seller/item/list.jsonp'),
   deleteItem:getOuterURL('/itemcenter/seller/open/delItem.do'),
   offlineItem:getOuterURL('/itemcenter/seller/open/offonlineItem.do'),

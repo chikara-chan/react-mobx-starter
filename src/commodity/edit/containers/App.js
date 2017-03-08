@@ -5,6 +5,7 @@ import ItemEdit from '../components/ItemEdit'
 
 class App extends PureComponent {
   render() {
+    var itemId = this.props.params.id;
     return (
       <BreadcrumbLayout titles={[{
         name: '商品管理',
@@ -14,7 +15,7 @@ class App extends PureComponent {
         href: '#/edit'
       }]}>
         <div className={styles.app}>
-          <ItemEdit></ItemEdit>
+          <ItemEdit id={itemId}></ItemEdit>
         </div>
       </BreadcrumbLayout>
     )
