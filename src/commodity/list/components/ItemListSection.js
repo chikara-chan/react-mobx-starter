@@ -1,18 +1,24 @@
 import React, {PureComponent} from 'react'
 import {observer, inject} from 'mobx-react'
 import styles from '../sass/ItemListSection'
-import {Table} from 'antd'
+import {Table,Popconfirm} from 'antd'
 
-@inject('queryStore','itemListStore')
+@inject('queryStore','itemListStore','handleStore')
 @observer
 class HandleSection extends PureComponent {
 
-  deleteHandle(e) {
-    console.log(e)
+  deleteHandle(e,id) {
+    const handleStore = this.props.handleStore;
+    handleStore.deleteItem(id);
+
   }
 
   editHandle(e) {
     console.log(e)
+  }
+  onChange(selectedRowKeys){
+
+    console.log(selectedRowKeys);
   }
 
 
@@ -20,6 +26,7 @@ render() {
     let itemList = this.props.itemListStore.itemList;
     let totalCount = this.props.itemListStore.totalCount;
     const queryStore = this.props.queryStore;
+    const handleStore = this.props.handleStore;
 
     let paginationConfig = {
       total:totalCount,
@@ -80,16 +87,16 @@ render() {
         render: (text, record) => {
           return (<p>
             <a onClick={this.editHandle} className={styles.handle} href={'#/edit/'+text.id}>编辑</a>
-            <a onClick={this.deleteHandle} className={styles.handle} href="javascript:void(0);">删除</a>
+            <Popconfirm placement="left" title="确认删除吗？" onConfirm={this.deleteHandle(text.id)} okText="确认" cancelText="取消">
+              <a className={styles.handle} href="javascript:void(0);">删除</a>
+            </Popconfirm>
           </p>)
         }
       }];
-      // let selectedRowKeys = []
+
       const rowSelection = {
-        // selectedRowKeys,
         onChange(selectedRowKeys){
-          console.log(selectedRowKeys)
-          // selectedRowKeys = selectedRowKeys
+          handleStore.replaceSelectedList(selectedRowKeys);
         }
       }
 

@@ -16,7 +16,7 @@ render(
         <Router history={hashHistory}>
           <Route path="/">
             <IndexRoute component={List}/>
-            <Route path="edit" component={Edit}/>
+            <Route path="/edit/:id" component={Edit} />
           </Route>
         </Router>
       </Layout>
