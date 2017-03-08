@@ -9,9 +9,8 @@ import api from 'shared/api';
 const FormItem = Form.Item;
 
 
-@inject('itemStore')
-@inject('loadingStore')
-@inject('breadcrumbStore')
+
+@inject('itemStore','loadingStore')
 @observer
 class ItemEdit extends PureComponent {
 
@@ -31,7 +30,6 @@ class ItemEdit extends PureComponent {
   componentWillMount(){
     const loadingStore = this.props.loadingStore;
     const itemStore = this.props.itemStore;
-    const breadcrumbStore = this.props.breadcrumbStore;
     const itemId = this.props.id;
     loadingStore.switchLoading(true);
     itemStore.fetchItem(itemId,function(){
@@ -218,7 +216,7 @@ class ItemEdit extends PureComponent {
                   </Col>
                   <Col span={14}>
                     <Button type="primary" htmlType="submit">保 存</Button>
-                    <Button onClick={this.goBack}>取 消</Button>
+                    <Button onClick={this.goBack}>返 回</Button>
                   </Col>
                 </Row>
               </li>

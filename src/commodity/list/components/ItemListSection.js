@@ -13,13 +13,6 @@ class HandleSection extends PureComponent {
 
   }
 
-  editHandle(e) {
-    console.log(e)
-  }
-  onChange(selectedRowKeys){
-
-    console.log(selectedRowKeys);
-  }
 
 
 render() {
@@ -30,7 +23,7 @@ render() {
 
     let paginationConfig = {
       total:totalCount,
-      pageSize:10,
+      pageSize:20,
       onChange(index){
         queryStore.replaceQueryParams({
           page:index
@@ -47,7 +40,7 @@ render() {
       }, {
         title: '商品信息',
         key: 'itemInfo',
-        render: (text, record) => {
+        render: (text) => {
           return (<div className={styles.itemInfo}>
             <div className={styles.imgContent}>
               <img src={'http://imgsize.52shangou.com/img/'+text.bigPicUrl+'@1e_100w_100h_1c_0i_1o_90Q_1x.jpg'} />
@@ -61,7 +54,7 @@ render() {
       },{
         title: '商品价格',
         key: 'price',
-        render: (text, record) => {
+        render: (text) => {
           return (<span>￥{(text.price/100).toFixed(2)}</span>)
         },
       },{
@@ -75,7 +68,7 @@ render() {
       },{
         title: '商品状态',
         key: 'itemStatus',
-        render: (text, record) => {
+        render: (text) => {
           var isOnline = text.itemStatus === 100;
           var statusStr = isOnline ? (<span className={styles.online}>在售</span>) :
             (<span className={styles.offline}>未上架</span>)
@@ -84,9 +77,9 @@ render() {
       },{
         title: '操作',
         key: 'action',
-        render: (text, record) => {
+        render: (text) => {
           return (<p>
-            <a onClick={this.editHandle} className={styles.handle} href={'#/edit/'+text.id}>编辑</a>
+            <a className={styles.handle} href={'#/edit/'+text.id}>编辑</a>
             <Popconfirm placement="left" title="确认删除吗？" onConfirm={this.deleteHandle(text.id)} okText="确认" cancelText="取消">
               <a className={styles.handle} href="javascript:void(0);">删除</a>
             </Popconfirm>
