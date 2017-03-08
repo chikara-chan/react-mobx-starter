@@ -4,8 +4,7 @@ import styles from '../sass/FormSection'
 import Order from './Order'
 import {Button, Form, Input, Select, Option, DatePicker, message} from 'antd'
 
-@inject('orderStore')
-@inject('formStore')
+@inject('orderStore', 'formStore')
 @observer
 class FormSection extends PureComponent {
   handleSubmit(e) {

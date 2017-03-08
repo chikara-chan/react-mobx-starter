@@ -11,8 +11,7 @@ const mapTabsKey = {
   2: '已取消'
 }
 
-@inject('orderStore')
-@inject('tabsStore')
+@inject('orderStore', 'tabsStore')
 @observer
 class Order extends PureComponent {
   handleConfirm() {
