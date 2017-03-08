@@ -2,6 +2,8 @@ import React, {PureComponent} from 'react'
 import styles from '../sass/Login'
 import {Button, Form, Input, Icon, Checkbox} from 'antd'
 import ajax from 'shared/ajax'
+import api from 'shared/api'
+import localStorage from 'shared/localStorage'
 import {getURLParams} from 'invincible'
 
 class Login extends PureComponent {
@@ -10,14 +12,20 @@ class Login extends PureComponent {
 
     const {form} = this.props
 
-    form.validateFields((err, values) => {
+    form.validateFields((err, data) => {
       if (!err) {
         ajax({
-          url: '/api/login',
-          data: values
-        }).then(() => {
+          url: api.login,
+          data: {
+            mobile: data.mobile,
+            password: data.password,
+            role: 'seller'
+          }
+        }).then(entry => {
           const {redirect} = getURLParams()
 
+          localStorage.setItem('mobile', entry.userInfo.mobile)
+          localStorage.setItem('shopId', entry.shopList[0].id)
           if (redirect) {
             location.replace(decodeURIComponent(redirect))
           } else {
@@ -38,7 +46,7 @@ class Login extends PureComponent {
           onSubmit={this.handleSubmit}>
           <div className={styles.container}>
             <Form.Item className={styles.field}>
-              {form.getFieldDecorator('userName', {
+              {form.getFieldDecorator('mobile', {
                 rules: [{
                   required: true,
                   message: '手机号不能为空'
@@ -57,14 +65,6 @@ class Login extends PureComponent {
               })(<Input type="password" addonBefore={<Icon type="lock"/>} placeholder="密码"/>)}
             </Form.Item>
             <Form.Item className={styles.field}>
-              {form.getFieldDecorator('remember', {
-                valuePropName: 'checked',
-                initialValue: false
-              })(
-                <Checkbox>下次自动登录</Checkbox>
-              )}
-            </Form.Item>
-            <Form.Item className={styles.field}>
               <Button className={styles.button} htmlType="submit">登录</Button>
             </Form.Item>
           </div>
@@ -73,5 +73,14 @@ class Login extends PureComponent {
     )
   }
 }
+
+// <Form.Item className={styles.field}>
+   // {form.getFieldDecorator('remember', {
+    // valuePropName: 'checked',
+    // initialValue: true
+  // })(
+    // <Checkbox>下次自动登录</Checkbox>
+  // )}
+// </Form.Item>
 
 export default Form.create()(Login)

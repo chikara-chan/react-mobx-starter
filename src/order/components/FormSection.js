@@ -2,35 +2,37 @@ import React, {PureComponent} from 'react'
 import {observer, inject} from 'mobx-react'
 import styles from '../sass/FormSection'
 import Order from './Order'
-import {Button, Form, Input, Select, Option, DatePicker} from 'antd'
+import {Button, Form, Input, Select, Option, DatePicker, message} from 'antd'
 
-@inject('tabsStore')
 @inject('orderStore')
+@inject('formStore')
 @observer
 class FormSection extends PureComponent {
   handleSubmit(e) {
     e.preventDefault()
 
-    const {form, tabsStore, orderStore} = this.props
+    const {form, orderStore, formStore} = this.props
 
-    form.validateFields((err, values) => {
+    form.validateFields((err, data) => {
       if (!err) {
-        if (values.rangeTime) {
-          values.start = values.rangeTime[0]._d.getTime()
-          values.end = values.rangeTime[0]._d.getTime()
+        if (data.rangeTime) {
+          data.gmtCreateStart = data.rangeTime[0]._d.getTime()
+          data.gmtCreateEnd = data.rangeTime[0]._d.getTime()
         }
-        delete values.rangeTime
-        console.log(values)
-        orderStore.fetchOrders({
-          key: tabsStore.key,
-          ...values
+        delete data.rangeTime
+        console.log(data)
+        formStore.replaceData(data)
+        orderStore.updatePagination({
+          pageNum: 1
         })
+        orderStore.replaceOrders([])
+        orderStore.fetchOrders()
       }
     })
   }
 
   render() {
-    const {form} = this.props
+    const {form, orderStore} = this.props
 
     return (
       <div className={styles.formSection}>
@@ -46,6 +48,7 @@ class FormSection extends PureComponent {
           <Form.Item className={styles.item}>
             {form.getFieldDecorator('rangeTime')(
               <DatePicker.RangePicker
+              use12Hours
                 showTime
                 format="YYYY-MM-DD HH:mm:ss"
                 placeholder={['开始时间', '结束时间']}/>
@@ -55,8 +58,12 @@ class FormSection extends PureComponent {
             <Button className={styles.button} htmlType="submit">查询</Button>
           </Form.Item>
         </Form>
-        <a className={styles.btn} href="javascript:void(0)">导出全部待发货订单</a>
-        <a className={styles.btn} href="javascript:void(0)">打印全部待发货订单</a>
+        {orderStore.orders.length !== 0 &&
+          <div>
+            <a className={styles.btn} href="javascript:void(0)">导出全部待发货订单</a>
+            <a className={styles.btn} href="javascript:void(0)">打印全部待发货订单</a>
+          </div>
+        }
       </div>
     )
   }

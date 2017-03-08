@@ -9,18 +9,23 @@ class FooterSection extends PureComponent {
   handleChange(pageNum) {
     const {orderStore} = this.props
 
-    orderStore.replacePageNum(pageNum)
+    orderStore.updatePagination({pageNum})
+    orderStore.fetchOrders()
   }
 
   render() {
     const {orderStore} = this.props
 
+    if (orderStore.orders.length === 0) {
+      return null
+    }
+
     return (
       <div className={styles.footerSection}>
         <Pagination className={styles.pagination}
-          current={orderStore.pageNum}
+          current={orderStore.pagination.pageNum}
           onChange={this.handleChange}
-          total={orderStore.pageTotal}/>
+          total={orderStore.pagination.total}/>
       </div>
     )
   }
