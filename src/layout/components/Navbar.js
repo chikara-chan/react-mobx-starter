@@ -21,14 +21,14 @@ function Navbar() {
         </Menu.Item>
         <Menu.Item className={`${styles.item} ${isActive('/commodity.html') ? styles.active : ''}`}
           key="1">
-          <a href="/commodity.html">
+          <a href="./commodity.html">
             <Icon type="appstore-o"/>商品管理
           </a>
           <Icon className={styles.iconRight} type="right"/>
         </Menu.Item>
         <Menu.Item className={`${styles.item} ${isActive('/account.html') ? styles.active : ''}`}
           key="2">
-          <a href="/account.html">
+          <a href="./account.html">
             <Icon type="user"/>个人中心
           </a>
           <Icon className={styles.iconRight} type="right"/>
