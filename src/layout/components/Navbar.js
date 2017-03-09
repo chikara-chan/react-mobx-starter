@@ -12,9 +12,9 @@ function Navbar() {
       <div className={styles.logo}>LOGO</div>
       <Menu className={styles.menu}
         theme ="dark">
-        <Menu.Item className={`${styles.item} ${isActive('/') ? styles.active : ''}`}
+        <Menu.Item className={`${styles.item} ${isActive('/index.html') ? styles.active : ''}`}
           key="0">
-          <a href="/">
+          <a href="./index.html">
             <Icon type="file-text"/>订单管理
           </a>
           <Icon className={styles.iconRight} type="right"/>
