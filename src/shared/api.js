@@ -1,6 +1,6 @@
 function getOuterURL(url) {
   // 本地环境
-  if (~location.host.indexOf('dev.')) {
+  if (~location.host.indexOf('dev.') || ~location.host.indexOf('dev.')) {
     return `http://daily.52shangou.com${url}`
   }
   // return `http://manage.51xianqu.com${url}`
