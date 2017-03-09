@@ -29,7 +29,7 @@ class Login extends PureComponent {
           if (redirect) {
             location.replace(decodeURIComponent(redirect))
           } else {
-            location.replace('/')
+            location.replace('./index.html')
           }
         })
       }
