@@ -28,16 +28,16 @@ class TabsSection extends PureComponent {
           selectedKeys={[tabsStore.key]}
           mode="horizontal">
           <Menu.Item className={styles.item}
-            key="0">
-              待发货<Badge className={styles.badge} count={tabsStore.key === '0' && orderStore.pagination.total}/>
-          </Menu.Item>
-          <Menu.Item className={styles.item}
-            key="1">
-              已发货<Badge className={styles.badge} count={tabsStore.key === '1' && orderStore.pagination.total}/>
-          </Menu.Item>
-          <Menu.Item className={styles.item}
             key="2">
-              已取消<Badge className={styles.badge} count={tabsStore.key === '2' && orderStore.pagination.total}/>
+              待发货<Badge className={styles.badge} count={tabsStore.key === '2' && orderStore.pagination.total}/>
+          </Menu.Item>
+          <Menu.Item className={styles.item}
+            key="3">
+              已发货<Badge className={styles.badge} count={tabsStore.key === '3' && orderStore.pagination.total}/>
+          </Menu.Item>
+          <Menu.Item className={styles.item}
+            key="5">
+              已取消<Badge className={styles.badge} count={tabsStore.key === '5' && orderStore.pagination.total}/>
           </Menu.Item>
         </Menu>
       </div>
