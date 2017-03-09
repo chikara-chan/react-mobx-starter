@@ -14,12 +14,11 @@ class FormSection extends PureComponent {
 
     form.validateFields((err, data) => {
       if (!err) {
-        if (data.rangeTime) {
+        if (data.rangeTime && data.rangeTime.length !== 0) {
           data.gmtCreateStart = data.rangeTime[0]._d.getTime()
           data.gmtCreateEnd = data.rangeTime[0]._d.getTime()
         }
         delete data.rangeTime
-        console.log(data)
         formStore.replaceData(data)
         orderStore.updatePagination({
           pageNum: 1
@@ -60,7 +59,6 @@ class FormSection extends PureComponent {
         {orderStore.orders.length !== 0 &&
           <div>
             <a className={styles.btn} href="javascript:void(0)">导出全部待发货订单</a>
-            <a className={styles.btn} href="javascript:void(0)">打印全部待发货订单</a>
           </div>
         }
       </div>

@@ -1,5 +1,6 @@
 import {observable, computed, action} from 'mobx'
 import ajax from 'shared/ajax'
+import localStorage from 'shared/localStorage'
 import api from 'shared/api'
 import stores from './index'
 
@@ -31,7 +32,8 @@ class OrderStore {
         ...stores.formStore.data,
         pageNum: this.pagination.pageNum,
         pageSize: this.pagination.pageSize,
-        key: stores.tabsStore.key
+        sellerListStatus: stores.tabsStore.key,
+        shopId: localStorage.getItem('shopId')
       }
     })
     this.updatePagination({
