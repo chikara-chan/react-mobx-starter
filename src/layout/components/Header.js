@@ -12,7 +12,7 @@ function handleLogout() {
       role: 'seller'
     }
   }).then(() => {
-    location.replace('/member.html')
+    location.replace('./member.html')
   })
 }
 
