@@ -31,7 +31,7 @@ function ajax(options) {
     promise[action](options.data).then(res => {
       if (!res.body.status) {
         if (res.body.responseCode === 10212) {
-          location = '/member.html?redirect=' + encodeURIComponent(location.href)
+          location = './member.html?redirect=' + encodeURIComponent(location.href)
         }
         message.error(res.body.message)
         reject(new Error(res.body.message))
