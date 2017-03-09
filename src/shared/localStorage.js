@@ -2,7 +2,7 @@ function getItem(name) {
   const value = localStorage.getItem(name)
 
   if (!value) {
-    location = '/member.html?redirect=' + encodeURIComponent(location.href)
+    location = './member.html?redirect=' + encodeURIComponent(location.href)
   }
   return value
 }

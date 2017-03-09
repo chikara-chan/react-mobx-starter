@@ -1,16 +1,19 @@
 import React, {PureComponent} from 'react'
 import {observer, inject} from 'mobx-react'
-import styles from '../sass/MainSection'
-import {Form, Tooltip, Icon,Row, Col,Button,Input,Upload} from 'antd';
+import styles from '../sass/ItemEdit'
+import {Form, Tooltip, Icon,Row, Col,Button,Input,Upload,message} from 'antd';
+import api from 'shared/api';
+
+
 
 const FormItem = Form.Item;
 
 
-@inject('itemStore')
-@inject('loadingStore')
-@inject('breadcrumbStore')
+
+@inject('itemStore','loadingStore')
 @observer
 class ItemEdit extends PureComponent {
+
   handleSubmit(e) {
     e.preventDefault();
     const {form} = this.props;
@@ -23,11 +26,11 @@ class ItemEdit extends PureComponent {
       }
     })
   }
+
   componentWillMount(){
     const loadingStore = this.props.loadingStore;
     const itemStore = this.props.itemStore;
-    const breadcrumbStore = this.props.breadcrumbStore;
-    const itemId = location.hash.substr(7);
+    const itemId = this.props.id;
     loadingStore.switchLoading(true);
     itemStore.fetchItem(itemId,function(){
       loadingStore.switchLoading(false);
@@ -41,6 +44,9 @@ class ItemEdit extends PureComponent {
 
   render() {
 
+
+
+
     const {getFieldDecorator} = this.props.form;
     const itemStore = this.props.itemStore;
 
@@ -48,15 +54,19 @@ class ItemEdit extends PureComponent {
     // 代理一下方可调试
     const uploadProps = {
       name: 'Filename',
-      action: 'http://manage.51xianqu.com/itemcenter/upload/server?notParseJpg=1',
+      action: api.uploadImage,
       showUploadList:false,
       onChange(info) {
-        if(info.file.response && info.file.response.entry){
-          itemStore.replaceItem({
-            ...itemStore.itemInfo,...{
-              bigPicUrl:info.file.response.entry
-            }
-          })
+        if(info.file.response){
+          if(info.file.response.entry){
+            itemStore.replaceItem({
+              ...itemStore.itemInfo,...{
+                bigPicUrl:info.file.response.entry
+              }
+            })
+          }else{
+            message.error(info.file.response.message)
+          }
         }
       }
     };
@@ -203,11 +213,10 @@ class ItemEdit extends PureComponent {
               <li>
                 <Row>
                   <Col span={10} className={styles.label}>
-
                   </Col>
                   <Col span={14}>
                     <Button type="primary" htmlType="submit">保 存</Button>
-                    <Button onClick={this.goBack}>取 消</Button>
+                    <Button onClick={this.goBack}>返 回</Button>
                   </Col>
                 </Row>
               </li>

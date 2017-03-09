@@ -6,9 +6,9 @@ import ajax from 'shared/ajax';
 class BreadcrumbStore {
 
   @observable BreadcrumbConfig = [{
-        name: '商品管理',
-        href: '/'
-      }];
+      name: '商品管理',
+      href: '/'
+    }];
 
   @action replaceConfig(newConfig) {
     this.BreadcrumbConfig = newConfig

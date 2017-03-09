@@ -3,6 +3,7 @@ import ajax from 'shared/ajax';
 import api from 'shared/api';
 import {getURLParams} from 'invincible';
 import Index from './index';
+import {message} from 'antd';
 
 
 
@@ -13,6 +14,10 @@ class HandleStore {
 
   @action replaceSelectedList(newList) {
     this.selectedList = newList;
+  }
+
+  showMsg(msg){
+    message.success(msg ||  '操作成功');
   }
 
   @action async deleteItem(itemIds) {
@@ -27,6 +32,7 @@ class HandleStore {
           itemIds:itemIds
         }
       });
+      this.showMsg();
       Index.queryStore.fetchData();
 
 
@@ -40,6 +46,7 @@ class HandleStore {
         itemIds:this.selectedList.join(',')
       }
     });
+    this.showMsg();
     Index.queryStore.fetchData();
   }
 
@@ -53,6 +60,7 @@ class HandleStore {
         status:100
       }
     });
+    this.showMsg();
     Index.queryStore.fetchData();
   }
   @action exportItem() {

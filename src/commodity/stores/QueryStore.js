@@ -2,7 +2,7 @@ import {observable,computed,action} from 'mobx'
 import ajax from 'shared/ajax';
 import api from 'shared/api';
 import {getURLParams} from 'invincible';
-
+import localStorage from 'shared/localStorage';
 import Index from './index';
 
 
@@ -12,7 +12,7 @@ class QueryStore {
 
   @observable queryParams = {
     shopId:localStorage.getItem('shopId'),
-    pageSize:10
+    pageSize:20
   }
 
 

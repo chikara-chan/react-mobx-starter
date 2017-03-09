@@ -2,6 +2,7 @@ import {observable,computed,action} from 'mobx'
 import ajax from 'shared/ajax';
 import api from 'shared/api';
 import {getURLParams} from 'invincible';
+import {message} from 'antd';
 
 
 
@@ -53,6 +54,7 @@ class ItemStore {
       data:this.formatSaveData()
     });
     this.replaceItem(res[0]);
+    message.success('保存成功');
   }
 
 }
