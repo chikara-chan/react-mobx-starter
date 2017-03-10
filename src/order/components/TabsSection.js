@@ -34,11 +34,11 @@ class TabsSection extends PureComponent {
           </Menu.Item>
           <Menu.Item className={styles.item}
             key="3">
-              {mapOrderStatus[3]}<Badge className={styles.badge} count={tabsStore.key === '3' && orderStore.pagination.total}/>
+              {mapOrderStatus[3]}<Badge className={styles.badge}/>
           </Menu.Item>
           <Menu.Item className={styles.item}
             key="5">
-              {mapOrderStatus[5]}<Badge className={styles.badge} count={tabsStore.key === '5' && orderStore.pagination.total}/>
+              {mapOrderStatus[5]}<Badge className={styles.badge}/>
           </Menu.Item>
         </Menu>
       </div>

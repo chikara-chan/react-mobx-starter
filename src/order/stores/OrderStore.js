@@ -44,11 +44,12 @@ class OrderStore {
 
   async handleConfirm(data) {
     await ajax({
-      url: '/api/handleConfirm',
+      url: api.sendOrder,
       data
     })
-  }
 
+    fetchOrders()
+  }
 }
 
 export default OrderStore
