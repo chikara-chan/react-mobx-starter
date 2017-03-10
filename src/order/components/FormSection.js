@@ -3,8 +3,9 @@ import {observer, inject} from 'mobx-react'
 import styles from '../sass/FormSection'
 import Order from './Order'
 import {Button, Form, Input, Select, Option, DatePicker, message} from 'antd'
+import {mapOrderStatus} from 'shared/utils'
 
-@inject('orderStore', 'formStore')
+@inject('orderStore', 'formStore', 'tabsStore')
 @observer
 class FormSection extends PureComponent {
   handleSubmit(e) {
@@ -30,7 +31,7 @@ class FormSection extends PureComponent {
   }
 
   render() {
-    const {form, orderStore} = this.props
+    const {form, orderStore, tabsStore} = this.props
 
     return (
       <div className={styles.formSection}>
@@ -58,7 +59,7 @@ class FormSection extends PureComponent {
         </Form>
         {orderStore.orders.length !== 0 &&
           <div>
-            <a className={styles.btn} href="javascript:void(0)">导出全部待发货订单</a>
+            <a className={styles.btn} href="javascript:void(0)">导出全部{mapOrderStatus[tabsStore.key]}订单</a>
           </div>
         }
       </div>

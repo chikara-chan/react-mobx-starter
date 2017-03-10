@@ -5,12 +5,7 @@ import styles from '../sass/Order'
 import SubOrder from './SubOrder'
 import {Row, Col} from 'antd'
 import {formatDate} from 'invincible'
-
-const mapTabsKey = {
-  0: '待发货',
-  1: '已发货',
-  2: '已取消'
-}
+import {mapOrderStatus} from 'shared/utils'
 
 @inject('orderStore', 'tabsStore')
 @observer
@@ -54,7 +49,7 @@ class Order extends PureComponent {
           <span className={styles.item}>配送地址: {order.addressSnapshot}</span>
           <span className={styles.item}>联系人: {order.buyerNick}</span>
           <span className={styles.item}>联系电话: {order.mobile}</span>
-          <span className={styles.status}>{mapTabsKey[tabsStore.key]}</span>
+          <span className={styles.status}>{mapOrderStatus[tabsStore.key]}</span>
         </div>
         <div className={styles.table}>
           <Row>
@@ -82,7 +77,9 @@ class Order extends PureComponent {
             合计 ￥<span className={styles.strong}>{order.totalPrice / 100}</span>
           </span>
           <span className={styles.colRight}>
-            <a className={styles.btnPrimary} onClick={this.handleConfirm} href="javascript:void(0)">确认发货</a>
+            {tabsStore.key === 0 &&
+              <a className={styles.btnPrimary} onClick={this.handleConfirm} href="javascript:void(0)">确认发货</a>
+            }
             <a className={styles.btn} href="javascript:void(0)">导出订单</a>
             <a className={styles.btn} href="javascript:void(0)" onClick={this.handlePrint}>打印订单</a>
           </span>

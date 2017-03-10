@@ -3,6 +3,7 @@ import {observer, inject} from 'mobx-react'
 import styles from '../sass/TabsSection'
 import Order from './Order'
 import {Button, Menu, Badge} from 'antd'
+import {mapOrderStatus} from 'shared/utils'
 
 @inject('tabsStore', 'orderStore')
 @observer
@@ -29,15 +30,15 @@ class TabsSection extends PureComponent {
           mode="horizontal">
           <Menu.Item className={styles.item}
             key="2">
-              待发货<Badge className={styles.badge} count={tabsStore.key === '2' && orderStore.pagination.total}/>
+              {mapOrderStatus[2]}<Badge className={styles.badge} count={tabsStore.key === '2' && orderStore.pagination.total}/>
           </Menu.Item>
           <Menu.Item className={styles.item}
             key="3">
-              已发货<Badge className={styles.badge} count={tabsStore.key === '3' && orderStore.pagination.total}/>
+              {mapOrderStatus[3]}<Badge className={styles.badge} count={tabsStore.key === '3' && orderStore.pagination.total}/>
           </Menu.Item>
           <Menu.Item className={styles.item}
             key="5">
-              已取消<Badge className={styles.badge} count={tabsStore.key === '5' && orderStore.pagination.total}/>
+              {mapOrderStatus[5]}<Badge className={styles.badge} count={tabsStore.key === '5' && orderStore.pagination.total}/>
           </Menu.Item>
         </Menu>
       </div>

@@ -3,8 +3,9 @@ function wrapPicURL(url) {
 }
 
 const mapOrderStatus = {
-  0: '待接单',
-  1: '已接单'
+  2: '待发货',
+  3: '已发货',
+  5: '已取消'
 }
 
 
