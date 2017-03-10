@@ -21,7 +21,7 @@ class SubOrder extends PureComponent {
               <p className={styles.prop}>{subOrder.property} / {subOrder.unit}</p>
             </div>
           </Col>
-          <Col sm={3}>￥{subOrder.itemPrice}</Col>
+          <Col sm={3}>￥{subOrder.itemPrice / 100}</Col>
           <Col sm={3}>&times; {subOrder.buyAmount}</Col>
         </Row>
       </div>

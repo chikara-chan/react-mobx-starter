@@ -4,6 +4,7 @@ import {observer, inject} from 'mobx-react'
 import styles from '../sass/Order'
 import SubOrder from './SubOrder'
 import {Row, Col} from 'antd'
+import {formatDate} from 'invincible'
 
 const mapTabsKey = {
   0: '待发货',
@@ -49,7 +50,7 @@ class Order extends PureComponent {
       <div className={styles.order}>
         <div className={styles.header}>
           <span className={styles.item}>订单编号: {order.bizOrderId}</span>
-          <span className={styles.item}>下单时间: {order.gmtCreate}</span><br/>
+          <span className={styles.item}>下单时间: {formatDate(order.gmtCreate)}</span><br/>
           <span className={styles.item}>配送地址: {order.addressSnapshot}</span>
           <span className={styles.item}>联系人: {order.buyerNick}</span>
           <span className={styles.item}>联系电话: {order.mobile}</span>
@@ -78,7 +79,7 @@ class Order extends PureComponent {
         <div className={styles.footer}>
           <span className={styles.colReft}>
             共 <span className={styles.strong}>{order.buyAmount}</span> 件商品,
-            合计 ￥<span className={styles.strong}>{order.totalPrice}</span>
+            合计 ￥<span className={styles.strong}>{order.totalPrice / 100}</span>
           </span>
           <span className={styles.colRight}>
             <a className={styles.btnPrimary} onClick={this.handleConfirm} href="javascript:void(0)">确认发货</a>
