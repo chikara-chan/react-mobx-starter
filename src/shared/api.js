@@ -10,7 +10,7 @@ function getOuterURL(url) {
 export default {
   login: getOuterURL('/member/login.do'),
   logout: getOuterURL('/member/logout.do'),
-  queryOrderList: getOuterURL('/trade/seller/order/queryOrderList'),
+  queryOrderList: getOuterURL('/trade/seller/caihaohuo/queryOrderList'),
   sendOrder: getOuterURL('/trade/order/sendOrder'),
   queryItem: getOuterURL('/itemcenter/seller/open/getItemsByIds.do'),
   uploadImage:getOuterURL('/itemcenter/upload/server?minWidth=750&wDivH-min=1.0&wDivH-max=1.0'),
