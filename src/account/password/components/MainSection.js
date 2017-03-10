@@ -18,7 +18,7 @@ class MainSection extends PureComponent {
           url: api.resetPassword,
           data: values
         }).then(() => {
-          location.replace('/account.html')
+          location.replace('./account.html')
         })
       }
     })
