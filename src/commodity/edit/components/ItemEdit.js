@@ -1,7 +1,7 @@
 import React, {PureComponent} from 'react'
 import {observer, inject} from 'mobx-react'
 import styles from '../sass/ItemEdit'
-import {Form, Tooltip, Icon,Row, Col,Button,Input,Upload,message} from 'antd';
+import {Form, Tooltip, Icon,Row, Col,Button,Input,Upload,message,InputNumber} from 'antd';
 import api from 'shared/api';
 
 
@@ -107,15 +107,9 @@ class ItemEdit extends PureComponent {
                     <label>商品品牌：</label>
                   </Col>
                   <Col span={14}>
-                    <FormItem className={styles.noBottomSpace}>
-                    {getFieldDecorator('brand', {
-                      initialValue:itemStore.itemInfo.brand,
-                      rules: [{ required: true, message: '请输入品牌' }],
-                    })(
-                      <Input  placeholder="商品品牌" />
-                    )}
-                    </FormItem>
+                    {itemStore.itemInfo.brand}
                   </Col>
+
                 </Row>
               </li>
               <li>
@@ -129,7 +123,7 @@ class ItemEdit extends PureComponent {
                       initialValue:itemStore.itemInfo.itemName,
                       rules: [{ required: true, message: '请输入商品名称' }],
                     })(
-                      <Input  placeholder="商品名称" />
+                      <Input maxlength={30} placeholder="商品名称" />
                     )}
                     </FormItem>
                   </Col>
@@ -186,7 +180,7 @@ class ItemEdit extends PureComponent {
                         initialValue:itemStore.itemInfo.quantity,
                         rules: [{ required: true, message: '请输入商品总库存' }],
                       })(
-                        <Input  placeholder="商品总库存" />
+                        <InputNumber min={0} max={9999} placeholder="商品总库存" />
                       )}
                     </FormItem>
                   </Col>
@@ -203,7 +197,7 @@ class ItemEdit extends PureComponent {
                       initialValue:itemStore.itemInfo.orderLimit || 1,
                       rules: [{ required: true, message: '请输入最小起订量' }],
                     })(
-                      <Input  placeholder="最小起订量" />
+                      <InputNumber min={1} max={9999} placeholder="最小起订量" />
                     )}
                     </FormItem>
                   </Col>

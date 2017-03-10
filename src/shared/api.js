@@ -19,5 +19,6 @@ export default {
   offlineItem:getOuterURL('/itemcenter/seller/open/offonlineItem.do'),
   onlineItem:getOuterURL('/itemcenter/seller/open/auditItem.do'),
   exportItem:getOuterURL('/itemcenter/seller/item/exportShopItemExcel?shopId='),
-  saveItem:getOuterURL('/itemcenter/seller/open/addOrUpdateItem')
+  saveItem:getOuterURL('/itemcenter/seller/open/addOrUpdateItem'),
+  resetPassword:getOuterURL('/member/resetSellerPwd.do')
 }
