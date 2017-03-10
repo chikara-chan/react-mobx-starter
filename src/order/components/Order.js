@@ -61,7 +61,7 @@ class Order extends PureComponent {
                 <Col sm={3}>单价</Col>
                 <Col sm={3}>数量</Col>
               </Row>
-              {order.subOrders.map(subOrder => <SubOrder subOrder={subOrder}/>)}
+              {order.subOrders.map((subOrder, index) => <SubOrder subOrder={subOrder} seq={`00${index+1}`}/>)}
             </Col>
             <Col sm={4}>
               <div className={`${styles.th} ${styles.thRight}`}>订单备注</div>

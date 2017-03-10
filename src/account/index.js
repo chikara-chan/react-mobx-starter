@@ -5,7 +5,6 @@ import {Router, Route, IndexRoute, hashHistory} from 'react-router'
 import Layout from '../layout/containers/Layout'
 import My from './my/containers/App'
 import Password from './password/containers/App'
-import Phone from './phone/containers/App'
 
 render(
   <AppContainer>
@@ -14,7 +13,6 @@ render(
         <Route path="/">
           <IndexRoute component={My}/>
           <Route path="password" component={Password}/>
-          <Route path="phone" component={Phone}/>
         </Route>
       </Router>
     </Layout>
