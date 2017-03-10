@@ -3,6 +3,7 @@ import {hashHistory} from 'react-router'
 import {Button, Form, Input, message} from 'antd'
 import styles from '../sass/MainSection'
 import ajax from 'shared/ajax'
+import api from 'shared/api'
 
 class MainSection extends PureComponent {
   handleSubmit(e) {
@@ -14,10 +15,10 @@ class MainSection extends PureComponent {
       if (!err) {
         delete values.repassword
         ajax({
-          url: '/api/login',
+          url: api.resetPassword,
           data: values
         }).then(() => {
-          location.replace('/account.html')
+          location.replace('./account.html')
         })
       }
     })
@@ -26,7 +27,7 @@ class MainSection extends PureComponent {
   checkPassword = (rule, value, callback) => {
     const {form} = this.props
 
-    if (value && value !== form.getFieldValue('password')) {
+    if (value && value !== form.getFieldValue('pwd')) {
       callback('两次密码不相同');
     } else {
       callback()
@@ -48,7 +49,7 @@ class MainSection extends PureComponent {
             labelCol={{span: 10}}
             wrapperCol={{span: 14}}
             label="当前登录密码">
-            {form.getFieldDecorator('oldPassword', {
+            {form.getFieldDecorator('curPwd', {
               rules: [{
                 required: true,
                 message: '必填项'
@@ -59,7 +60,7 @@ class MainSection extends PureComponent {
             labelCol={{span: 10}}
             wrapperCol={{span: 14}}
             label="新的登录密码">
-            {form.getFieldDecorator('password', {
+            {form.getFieldDecorator('pwd', {
               rules: [{
                 required: true,
                 message: '必填项'
@@ -70,7 +71,7 @@ class MainSection extends PureComponent {
             labelCol={{span: 10}}
             wrapperCol={{span: 14}}
             label="再次输入新的登录密码">
-            {form.getFieldDecorator('repassword', {
+            {form.getFieldDecorator('repwd', {
               rules: [{
                 required: true,
                 message: '必填项'
