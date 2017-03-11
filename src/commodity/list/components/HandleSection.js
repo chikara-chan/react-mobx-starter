@@ -1,7 +1,7 @@
 import React, {PureComponent} from 'react'
 import {observer, inject} from 'mobx-react'
 import styles from '../sass/HandleSection'
-import {Button, Form, Input, Select, DatePicker,Popconfirm} from 'antd'
+import {Button, Form, Input, Select, DatePicker,Popconfirm,message} from 'antd'
 
 @inject('handleStore')
 @observer
@@ -9,7 +9,12 @@ class HandleSection extends PureComponent {
 
 
   doHandle(e,type){
-    var handleStore = this.props.handleStore;
+    let handleStore = this.props.handleStore;
+    let selectedList = this.props.handleStore.selectedList;
+    if(type != 'export' && !selectedList.length ){
+      message.warn('没有选中的商品');
+      return;
+    }
     handleStore[type + 'Item']();
   }
 
