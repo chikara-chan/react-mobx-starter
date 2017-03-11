@@ -79,7 +79,7 @@ class Order extends PureComponent {
           </Row>
         </div>
         <div className={styles.footer}>
-          <span className={styles.colReft}>
+          <span className={styles.colLeft}>
             共 <span className={styles.strong}>{order.buyAmount}</span> 件商品,
             合计 ￥<span className={styles.strong}>{order.totalPrice / 100}</span>
           </span>
