@@ -15,11 +15,6 @@ class FormSection extends PureComponent {
 
     form.validateFields((err, data) => {
       if (!err) {
-        if (data.rangeTime && data.rangeTime.length !== 0) {
-          data.gmtCreateStart = data.rangeTime[0]._d.getTime()
-          data.gmtCreateEnd = data.rangeTime[0]._d.getTime()
-        }
-        delete data.rangeTime
         formStore.replaceData(data)
         orderStore.updatePagination({
           pageNum: 1
@@ -60,12 +55,21 @@ class FormSection extends PureComponent {
             }]})(<Input className={styles.input} placeholder="输入订单编号"/>)}
           </Form.Item>
           <Form.Item className={styles.item}>
-            {form.getFieldDecorator('rangeTime')(
-              <DatePicker.RangePicker
-              use12Hours
+            {form.getFieldDecorator('gmtCreateStart')(
+            <DatePicker
+              showTime
+              format="YYYY-MM-DD HH:mm:ss"
+              placeholder="开始时间"
+            />
+            )}
+          </Form.Item>
+          <Form.Item className={styles.item}>
+            {form.getFieldDecorator('gmtCreateEnd')(
+              <DatePicker
                 showTime
                 format="YYYY-MM-DD HH:mm:ss"
-                placeholder={['开始时间', '结束时间']}/>
+                placeholder="结束时间"
+              />
             )}
           </Form.Item>
           <Form.Item className={styles.item}>

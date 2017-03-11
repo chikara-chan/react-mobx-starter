@@ -15,11 +15,10 @@
         width: 237px;
       }
       :global {
-        .ant-calendar-picker-input {
-          height: 28px;
-          .ant-calendar-range-picker-input, .ant-calendar-range-picker-separator {
-            position: relative;
-            top: -1px;
+        .ant-form-item-control {
+          line-height: 28px;
+          .ant-calendar-picker-input {
+            height: 28px;
           }
         }
       }
