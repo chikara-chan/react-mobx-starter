@@ -6,6 +6,13 @@ import api from 'shared/api'
 import localStorage from 'shared/localStorage'
 import {getURLParams} from 'invincible'
 
+import Encrypt from 'shared/encrypt'
+
+const pubkey = 'MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCIBeKWiLSAJvoAwfiQZQvdwx4VHyAyPlSPoRhZYJJzTvQP0n6pm+vueONxZ8XXK2947boHG35a9Ee4oq4wCkCnN8pQ775GRZKypibIzmKUnwofuvJ0GgJXvDBkaI20d1+4o76MSMMDt5V4BH7R5ZD9N+RKQ8u+24aQ1SR5ONpAYQIDAQAB'
+const encrypt = new Encrypt();
+encrypt.setPublicKey(pubkey);
+
+
 class Login extends PureComponent {
   handleSubmit(e) {
     e.preventDefault()
@@ -14,12 +21,14 @@ class Login extends PureComponent {
 
     form.validateFields((err, data) => {
       if (!err) {
+
         ajax({
           url: api.login,
           data: {
             mobile: data.mobile,
-            password: data.password,
-            role: 'seller'
+            password: encrypt.encrypt(data.password),
+            role: 'seller',
+            encrypt: "1"
           }
         }).then(entry => {
           const {redirect} = getURLParams()
