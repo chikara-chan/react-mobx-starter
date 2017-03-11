@@ -16,14 +16,15 @@ class HandleStore {
     this.selectedList = newList;
   }
 
-  showMsg(msg){
-    message.success(msg ||  '操作成功');
+  showMsg(msg,type){
+    message[type || 'success'](msg ||  '操作成功');
   }
 
   @action async deleteItem(itemIds) {
       if(!itemIds){
         itemIds = this.selectedList.join(',');
       }
+
 
       const res = await ajax({
         url:api.deleteItem,
@@ -39,6 +40,7 @@ class HandleStore {
   }
 
   @action async offlineItem() {
+
     const res = await ajax({
       url:api.offlineItem,
       type:'get',
