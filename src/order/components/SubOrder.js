@@ -10,9 +10,9 @@ class SubOrder extends PureComponent {
     return (
       <div className={styles.subOrder}>
         <Row className={styles.row} gutter={15}>
-          <Col className={styles.col} sm={3}>{seq}</Col>
+          <Col className={styles.col} sm={4}>{seq}</Col>
           <Col sm={4}>{subOrder.itemOuterId}</Col>
-          <Col sm={11}>
+          <Col sm={12}>
             <div className={styles.colLeft}>
               <img className={styles.img} src={wrapPicURL(subOrder.itemPicUrl)}/>
             </div>
@@ -21,8 +21,7 @@ class SubOrder extends PureComponent {
               <p className={styles.prop}>{subOrder.property} / {subOrder.unit}</p>
             </div>
           </Col>
-          <Col sm={3}>￥{subOrder.itemPrice / 100}</Col>
-          <Col sm={3}>&times; {subOrder.buyAmount}</Col>
+          <Col sm={4}>&times; {subOrder.buyAmount}</Col>
         </Row>
       </div>
     )
