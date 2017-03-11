@@ -3,6 +3,7 @@ import ajax from 'shared/ajax'
 import localStorage from 'shared/localStorage'
 import api from 'shared/api'
 import stores from './index'
+import {message} from 'antd'
 
 class OrderStore {
   @observable orders = []
@@ -48,7 +49,16 @@ class OrderStore {
       data
     })
 
+    message.success('发货成功')
     this.fetchOrders()
+  }
+
+  async handleExport(data) {
+    await ajax({
+      url: api.export,
+      type: 'get',
+      data
+    })
   }
 }
 

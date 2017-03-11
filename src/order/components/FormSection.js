@@ -30,6 +30,21 @@ class FormSection extends PureComponent {
     })
   }
 
+  handleExport() {
+    const {orderStore, tabsStore} = this.props
+
+    orderStore.handleExport({
+      sellerListStatus: tabsStore.key,
+      shopId: localStorage.getItem('shopId')
+    })
+  }
+
+  componentWillMount() {
+    const {orderStore} = this.props
+
+    orderStore.fetchOrders()
+  }
+
   render() {
     const {form, orderStore, tabsStore} = this.props
 
@@ -59,7 +74,7 @@ class FormSection extends PureComponent {
         </Form>
         {orderStore.orders.length !== 0 &&
           <div>
-            <a className={styles.btn} href="javascript:void(0)">导出全部{mapOrderStatus[tabsStore.key]}订单</a>
+            <a className={styles.btn} href="javascript:void(0)" onClick={this.handleExport}>导出全部{mapOrderStatus[tabsStore.key]}订单</a>
           </div>
         }
       </div>

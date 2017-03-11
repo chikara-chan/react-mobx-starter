@@ -6,6 +6,7 @@ import SubOrder from './SubOrder'
 import {Row, Col} from 'antd'
 import {formatDate} from 'invincible'
 import {mapOrderStatus} from 'shared/utils'
+import localStorage from 'shared/localStorage'
 
 @inject('orderStore', 'tabsStore')
 @observer
@@ -36,6 +37,16 @@ class Order extends PureComponent {
       document.title = preTitle
       el.parentNode.removeChild(el)
     }, 200)
+  }
+
+  handleExport() {
+    const {orderStore, tabsStore, order} = this.props
+
+    orderStore.handleExport({
+      bizOrderId: order.bizOrderId,
+      sellerListStatus: tabsStore.key,
+      shopId: localStorage.getItem('shopId')
+    })
   }
 
   render() {
@@ -80,7 +91,7 @@ class Order extends PureComponent {
             {tabsStore.key === '2' &&
               <a className={styles.btnPrimary} onClick={this.handleConfirm} href="javascript:void(0)">确认发货</a>
             }
-            <a className={styles.btn} href="javascript:void(0)">导出订单</a>
+            <a className={styles.btn} href="javascript:void(0)" onClick={this.handleExport}>导出订单</a>
             <a className={styles.btn} href="javascript:void(0)" onClick={this.handlePrint}>打印订单</a>
           </span>
         </div>
