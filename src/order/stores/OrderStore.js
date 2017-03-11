@@ -49,7 +49,7 @@ class OrderStore {
         ...stores.formStore.data,
         pageNum: this.pagination.pageNum,
         pageSize: this.pagination.pageSize,
-        sellerListStatus: stores.tabsStore.key,
+        sellerListStatus: stores.tabsStore.key === '5' ? '7' : stores.tabsStore.key,
         shopId: localStorage.getItem('shopId')
       }
     })
