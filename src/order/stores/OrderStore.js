@@ -9,10 +9,14 @@ class OrderStore {
   @observable orders = []
   @observable pagination = {
     pageNum: 1,
-    pageSize: 10,
-    total: 0
+    pageSize: 10
   }
-
+  @observable total = {
+    '2': 0,
+    '3': 0,
+    '5': 0
+  }
+  @observable loading = false
 
   @action updatePagination(pagination) {
     this.pagination = {
@@ -21,11 +25,23 @@ class OrderStore {
     }
   }
 
+  @action updateTotal(total) {
+    this.total = {
+      ...this.total,
+      ...total
+    }
+  }
+
+  @action updateLoading(loading) {
+    this.loading = loading
+  }
+
   @action replaceOrders(orders) {
     this.orders = orders
   }
 
   async fetchOrders() {
+    this.updateLoading(true)
     const res = await ajax({
       url: api.queryOrderList,
       raw: true,
@@ -37,10 +53,11 @@ class OrderStore {
         shopId: localStorage.getItem('shopId')
       }
     })
-    this.updatePagination({
-      total: res.totalRecordSize
+    this.updateTotal({
+      [stores.tabsStore.key]: res.totalRecordSize
     })
     this.replaceOrders(res.entry)
+    this.updateLoading(false)
   }
 
   async handleConfirm(data) {

@@ -31,7 +31,7 @@ class TabsSection extends PureComponent {
           mode="horizontal">
           <Menu.Item className={styles.item}
             key="2">
-              {mapOrderStatus[2]}<Badge className={styles.badge} count={tabsStore.key === '2' && orderStore.pagination.total}/>
+              {mapOrderStatus[2]}<Badge className={styles.badge} count={orderStore.total['2']}/>
           </Menu.Item>
           <Menu.Item className={styles.item}
             key="3">

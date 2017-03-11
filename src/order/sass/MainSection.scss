@@ -1,4 +1,12 @@
 @import '../../shared/mixins';
 
 .main-section {
+  .mask {
+    text-align: center;
+    margin-top: 100px;
+    .desc {
+      color: $color-light;
+      margin-top: 13px;
+    }
+  }
 }

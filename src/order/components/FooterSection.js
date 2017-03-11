@@ -3,7 +3,7 @@ import {observer, inject} from 'mobx-react'
 import styles from '../sass/FooterSection'
 import {Pagination} from 'antd'
 
-@inject('orderStore')
+@inject('orderStore', 'tabsStore')
 @observer
 class FooterSection extends PureComponent {
   handleChange(pageNum) {
@@ -14,7 +14,7 @@ class FooterSection extends PureComponent {
   }
 
   render() {
-    const {orderStore} = this.props
+    const {orderStore, tabsStore} = this.props
 
     if (orderStore.orders.length === 0) {
       return null
@@ -25,7 +25,7 @@ class FooterSection extends PureComponent {
         <Pagination className={styles.pagination}
           current={orderStore.pagination.pageNum}
           onChange={this.handleChange}
-          total={orderStore.pagination.total}/>
+          total={orderStore.total[tabsStore.key]}/>
       </div>
     )
   }
