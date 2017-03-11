@@ -70,12 +70,8 @@ class OrderStore {
     this.fetchOrders()
   }
 
-  async handleExport(data) {
-    await ajax({
-      url: api.export,
-      type: 'get',
-      data
-    })
+  async handleExport(search) {
+    location.href = `${api.export}?${search}`
   }
 }
 

@@ -28,10 +28,7 @@ class FormSection extends PureComponent {
   handleExport() {
     const {orderStore, tabsStore} = this.props
 
-    orderStore.handleExport({
-      sellerListStatus: tabsStore.key,
-      shopId: localStorage.getItem('shopId')
-    })
+    orderStore.handleExport(`sellerListStatus=${tabsStore.key}&shopId=${localStorage.getItem('shopId')}`)
   }
 
   componentWillMount() {

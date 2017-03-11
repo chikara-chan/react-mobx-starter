@@ -29,6 +29,11 @@ function ajax(options) {
 
   return new Promise((resolve, reject) => {
     promise[action](options.data).then(res => {
+      if (res.type === 'application/octet-stream') {
+        resolve()
+
+        return
+      }
       if (!res.body.status) {
         if (res.body.responseCode === 10212) {
           location = './member.html?redirect=' + encodeURIComponent(location.href)

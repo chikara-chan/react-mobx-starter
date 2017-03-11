@@ -42,11 +42,7 @@ class Order extends PureComponent {
   handleExport() {
     const {orderStore, tabsStore, order} = this.props
 
-    orderStore.handleExport({
-      bizOrderId: order.bizOrderId,
-      sellerListStatus: tabsStore.key,
-      shopId: localStorage.getItem('shopId')
-    })
+    orderStore.handleExport(`bizOrderId=${order.bizOrderId}&sellerListStatus=${tabsStore.key}&shopId=${localStorage.getItem('shopId')}`)
   }
 
   render() {
