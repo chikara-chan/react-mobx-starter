@@ -48,7 +48,7 @@ class OrderStore {
       data
     })
 
-    fetchOrders()
+    this.fetchOrders()
   }
 }
 

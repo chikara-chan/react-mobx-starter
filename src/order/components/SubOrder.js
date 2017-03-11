@@ -5,13 +5,14 @@ import {wrapPicURL} from 'shared/utils'
 
 class SubOrder extends PureComponent {
   render() {
-    const {subOrder, seq} = this.props
+    const {subOrder, seq, order} = this.props,
+      attributes = JSON.parse(order.attributes)
 
     return (
       <div className={styles.subOrder}>
         <Row className={styles.row} gutter={15}>
           <Col className={styles.col} sm={3}>{seq}</Col>
-          <Col sm={4}>{subOrder.itemOuterId}</Col>
+          <Col sm={4}>{attributes['itemOuterId']}</Col>
           <Col sm={11}>
             <div className={styles.colLeft}>
               <img className={styles.img} src={wrapPicURL(subOrder.itemPicUrl)}/>

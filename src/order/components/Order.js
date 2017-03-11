@@ -14,7 +14,7 @@ class Order extends PureComponent {
     const {order, orderStore} = this.props
 
     orderStore.handleConfirm({
-      bizOrder: order.bizOrder
+      bizOrderId: order.bizOrderId
     })
   }
 
@@ -61,7 +61,7 @@ class Order extends PureComponent {
                 <Col sm={3}>单价</Col>
                 <Col sm={3}>数量</Col>
               </Row>
-              {order.subOrders.map((subOrder, index) => <SubOrder subOrder={subOrder} seq={`00${index+1}`}/>)}
+              {order.subOrders.map((subOrder, index) => <SubOrder subOrder={subOrder} order={order} seq={`00${index+1}`}/>)}
             </Col>
             <Col sm={4}>
               <div className={`${styles.th} ${styles.thRight}`}>订单备注</div>
@@ -77,7 +77,7 @@ class Order extends PureComponent {
             合计 ￥<span className={styles.strong}>{order.totalPrice / 100}</span>
           </span>
           <span className={styles.colRight}>
-            {tabsStore.key === 0 &&
+            {tabsStore.key === '2' &&
               <a className={styles.btnPrimary} onClick={this.handleConfirm} href="javascript:void(0)">确认发货</a>
             }
             <a className={styles.btn} href="javascript:void(0)">导出订单</a>

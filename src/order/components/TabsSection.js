@@ -13,7 +13,8 @@ class TabsSection extends PureComponent {
 
     tabsStore.replaceKey(e.key)
     orderStore.updatePagination({
-      pageNum: 1
+      pageNum: 1,
+      total: 0
     })
     orderStore.replaceOrders([])
     orderStore.fetchOrders()
