@@ -115,9 +115,14 @@ class ItemEdit extends PureComponent {
               <li>
                 <Row>
                   <Col span={10} className={styles.label}>
-                    <label>商品名称：</label>
+
+                    <label>
+                      <em class={styles.needParam}>*</em>
+                      商品名称：
+                    </label>
                   </Col>
                   <Col span={14}>
+
                     <FormItem className={styles.noBottomSpace}>
                     {getFieldDecorator('itemName', {
                       initialValue:itemStore.itemInfo.itemName,
@@ -172,7 +177,10 @@ class ItemEdit extends PureComponent {
               <li>
                 <Row>
                   <Col span={10} className={styles.label}>
-                    <label>商品总库存：</label>
+                    <label>
+                      <em class={styles.needParam}>*</em>
+                      商品总库存：
+                    </label>
                   </Col>
                   <Col span={14}>
                     <FormItem className={styles.noBottomSpace}>
@@ -189,7 +197,10 @@ class ItemEdit extends PureComponent {
               <li>
                 <Row>
                   <Col span={10} className={styles.label}>
-                    <label>最小起订量：</label>
+                    <label>
+                      <em class={styles.needParam}>*</em>
+                      最小起订量：
+                    </label>
                   </Col>
                   <Col span={14}>
                     <FormItem className={styles.noBottomSpace}>
