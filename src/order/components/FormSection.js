@@ -25,6 +25,22 @@ class FormSection extends PureComponent {
     })
   }
 
+  disabledStartDate = (startValue) => {
+    const endValue = this.props.form.getFieldValue('gmtCreateEnd')
+    if (!startValue || !endValue) {
+      return false;
+    }
+    return startValue.valueOf() > endValue.valueOf()
+  }
+
+  disabledEndDate = (endValue) => {
+    const startValue = this.props.form.getFieldValue('gmtCreateStart')
+    if (!endValue || !startValue) {
+      return false;
+    }
+    return endValue.valueOf() <= startValue.valueOf()
+  }
+
   handleExport() {
     const {orderStore, tabsStore} = this.props
 
@@ -53,7 +69,7 @@ class FormSection extends PureComponent {
           </Form.Item>
           <Form.Item className={styles.item}>
             {form.getFieldDecorator('gmtCreateStart')(
-            <DatePicker
+            <DatePicker disabledDate={this.disabledStartDate}
               showTime
               format="YYYY-MM-DD HH:mm:ss"
               placeholder="开始时间"
@@ -62,7 +78,7 @@ class FormSection extends PureComponent {
           </Form.Item>
           <Form.Item className={styles.item}>
             {form.getFieldDecorator('gmtCreateEnd')(
-              <DatePicker
+              <DatePicker disabledDate={this.disabledEndDate}
                 showTime
                 format="YYYY-MM-DD HH:mm:ss"
                 placeholder="结束时间"
