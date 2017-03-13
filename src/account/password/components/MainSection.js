@@ -55,7 +55,7 @@ class MainSection extends PureComponent {
                 required: true,
                 message: '不能为空'
               }, {
-                pattern: /\w{6,16}/,
+                pattern: /^\w{6,16}$/,
                 message: '请输入6 ~ 16位数字/字母'
               }]
             })(<Input type="password" placeholder="输入当前登录密码"/>)}
@@ -69,7 +69,7 @@ class MainSection extends PureComponent {
                 required: true,
                 message: '不能为空'
               }, {
-                pattern: /\w{6,16}/,
+                pattern: /^\w{6,16}$/,
                 message: '请输入6 ~ 16位数字/字母'
               }]
             })(<Input type="password" maxLength="16" placeholder="输入新的登录密码(6 ~ 16位数字/字母)"/>)}
