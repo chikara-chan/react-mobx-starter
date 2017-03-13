@@ -74,7 +74,7 @@ class Login extends PureComponent {
                   pattern: /^\d{11}$/,
                   message: '请输入正确格式'
                 }]
-              })(<Input onKeyDown={this.handleKeyDown} addonBefore={<Icon type="user"/>} maxLength="11" placeholder="手机号"/>)}
+              })(<Input onKeyDown={this.handleKeyDown} addonBefore={<Icon type="user"/>} maxLength="11" placeholder="输入账号（11位数字）"/>)}
             </Form.Item>
             <Form.Item className={styles.field}>
               {form.getFieldDecorator('password', {
@@ -82,7 +82,7 @@ class Login extends PureComponent {
                   required: true,
                   message: '密码不能为空'
                 }]
-              })(<Input type="password" addonBefore={<Icon type="lock"/>} placeholder="密码"/>)}
+              })(<Input type="password" addonBefore={<Icon type="lock"/>} placeholder="输入账号密码"/>)}
             </Form.Item>
             <Form.Item className={styles.field}>
               <Button className={styles.button} htmlType="submit">登录</Button>
