@@ -37,25 +37,21 @@ render() {
         title: '商品ID',
         dataIndex: 'id',
         key: 'id',
+
       }, {
         title: '商品信息',
         key: 'itemInfo',
+        width:'50%',
         render: (text) => {
           return (<div className={styles.itemInfo}>
             <div className={styles.imgContent}>
               <img src={'http://imgsize.52shangou.com/img/'+text.bigPicUrl+'@1e_100w_100h_1c_0i_1o_90Q_1x.jpg'} />
             </div>
             <div className={styles.txtContent}>
-              <p className={styles.itemName}>{text.itemName}</p>
+              <p className={styles.itemName}>{text.brand} {text.itemName}</p>
               <p className={styles.itemProperty}>{text.property}</p>
             </div>
           </div>)
-        },
-      },{
-        title: '商品价格',
-        key: 'price',
-        render: (text) => {
-          return (<span>￥{(text.price/100).toFixed(2)}</span>)
         },
       },{
         title: '月销量',
