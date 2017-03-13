@@ -50,7 +50,7 @@ function ajax(options) {
       }
       resolve(res.body.entry)
     }).catch(err => {
-      message.error('出错了')
+      message.error('网络异常，操作失败')
       reject(err)
     })
   })

@@ -58,7 +58,7 @@ class Order extends PureComponent {
           <span className={styles.item}>配送地址: {order.addressSnapshot}</span>
           <span className={styles.item}>联系人: {order.buyerNick}</span>
           <span className={styles.item}>联系电话: {order.mobile}</span>
-          <span className={styles.status}>{mapOrderStatus[tabsStore.key]}</span>
+          <span className={styles.status}>{order.statusDesc}</span>
         </div>
         <div className={styles.table}>
           <Row>
