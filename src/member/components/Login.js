@@ -45,6 +45,17 @@ class Login extends PureComponent {
     })
   }
 
+  handleKeyDown(e) {
+    const {keyCode} = e
+
+    if (
+      keyCode < 48 && keyCode !== 8 && keyCode !== 13 ||
+      keyCode > 57
+    ) {
+      e.preventDefault()
+    }
+  }
+
   render() {
     const {form} = this.props
 
@@ -63,7 +74,7 @@ class Login extends PureComponent {
                   pattern: /^\d{11}$/,
                   message: '请输入正确格式'
                 }]
-              })(<Input addonBefore={<Icon type="user"/>} maxLength="11" placeholder="手机号"/>)}
+              })(<Input onKeyDown={this.handleKeyDown} addonBefore={<Icon type="user"/>} maxLength="11" placeholder="手机号"/>)}
             </Form.Item>
             <Form.Item className={styles.field}>
               {form.getFieldDecorator('password', {
