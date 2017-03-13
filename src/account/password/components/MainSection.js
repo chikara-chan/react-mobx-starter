@@ -72,7 +72,7 @@ class MainSection extends PureComponent {
                 pattern: /\w{6,16}/,
                 message: '请输入6 ~ 16位数字/字母'
               }]
-            })(<Input type="password" placeholder="输入新的登录密码(6 ~ 16位数字/字母)"/>)}
+            })(<Input type="password" maxLength="16" placeholder="输入新的登录密码(6 ~ 16位数字/字母)"/>)}
           </Form.Item>
           <Form.Item className={styles.field}
             labelCol={{span: 9}}
@@ -85,7 +85,7 @@ class MainSection extends PureComponent {
               }, {
               validator: this.checkPassword,
               }]
-            })(<Input type="password" placeholder="再次输入新的登录密码(6 ~ 16位数字/字母)"/>)}
+            })(<Input type="password" maxLength="16" placeholder="再次输入新的登录密码(6 ~ 16位数字/字母)"/>)}
           </Form.Item>
           <Form.Item className={styles.field}
             wrapperCol={{span: 14, offset: 10}}>
