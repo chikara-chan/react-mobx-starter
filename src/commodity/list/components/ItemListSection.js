@@ -55,13 +55,13 @@ render() {
           </div>)
         },
       },{
-        title: '月销量',
-        key: 'soldQuantity',
-        dataIndex:'soldQuantity'
-      },{
         title: '当前库存',
         key: 'quantity',
         dataIndex:'quantity'
+      },{
+        title: '月销量',
+        key: 'soldQuantity',
+        dataIndex:'soldQuantity'
       },{
         title: '商品状态',
         key: 'itemStatus',
