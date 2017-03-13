@@ -18,7 +18,8 @@ class MainSection extends PureComponent {
           url: api.resetPassword,
           data: values
         }).then(() => {
-          location.replace('./account.html')
+          message.success('登录密码, 修改成功')
+          hashHistory.push('/')
         })
       }
     })
