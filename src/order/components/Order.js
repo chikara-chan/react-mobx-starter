@@ -52,7 +52,9 @@ class Order extends PureComponent {
       <div className={styles.order}>
         <div className={styles.header}>
           <span className={styles.item}>订单编号: {order.bizOrderId}</span>
-          <span className={styles.item}>下单时间: {formatDate(order.gmtCreate)}</span><br/>
+          <span className={styles.item}>下单时间: {formatDate(order.gmtCreate)}</span>
+          <span className={styles.item}>买家店铺ID: {order.b2bBuyerShopId}</span>
+          <span className={styles.item}>买家店铺名称: {order.b2bBuyerShopName}</span><br/>
           <span className={styles.item}>配送地址: {order.addressSnapshot}</span>
           <span className={styles.item}>联系人: {order.buyerNick}</span>
           <span className={styles.item}>联系电话: {order.mobile}</span>
@@ -62,11 +64,10 @@ class Order extends PureComponent {
           <Row>
             <Col className={styles.tableLeft} sm={20}>
               <Row className={styles.th} gutter={15}>
-                <Col sm={3}>NO.</Col>
+                <Col sm={4}>NO.</Col>
                 <Col sm={4}>商品货号</Col>
-                <Col sm={11}>商品详情</Col>
-                <Col sm={3}>单价</Col>
-                <Col sm={3}>数量</Col>
+                <Col sm={12}>商品详情</Col>
+                <Col sm={4}>数量</Col>
               </Row>
               {order.subOrders.map((subOrder, index) => <SubOrder subOrder={subOrder} order={order} seq={`00${index+1}`}/>)}
             </Col>
