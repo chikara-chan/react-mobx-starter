@@ -1,5 +1,5 @@
 import React from 'react'
-import {createDevTools} from 'redux-devtools'
+import { createDevTools } from 'redux-devtools'
 import DockMonitor from 'redux-devtools-dock-monitor'
 import ChartMonitor from 'redux-devtools-chart-monitor'
 
@@ -25,6 +25,6 @@ export default createDevTools(
           border: '1px solid #dbdbdb',
           padding: '5px'
         }
-      }}/>
+      }} />
   </DockMonitor>
 )

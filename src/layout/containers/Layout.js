@@ -7,12 +7,12 @@ import Navbar from '../components/Navbar'
 import Main from '../components/Main'
 
 function Layout(props) {
-  const {children} = props
+  const { children } = props
 
   return (
     <div className={styles.layout}>
-      <Header/>
-      <Navbar/>
+      <Header />
+      <Navbar />
       <Main>
         {children}
       </Main>

@@ -1,9 +1,9 @@
 import React from 'react'
-import {Provider} from 'react-redux'
+import { Provider } from 'react-redux'
 import Layout from './Layout'
 
 function Root(props) {
-  const {store, children} = props
+  const { store, children } = props
 
   return (
     <Provider store={store}>
