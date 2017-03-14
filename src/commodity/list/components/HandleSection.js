@@ -19,9 +19,12 @@ class HandleSection extends PureComponent {
   }
 
 
+
+
   render() {
 
-    let selectedList = this.props.handleStore.selectedList;
+    const selectedList = this.props.handleStore.selectedList;
+
     return (
       <div className={styles.handleSection}>
         <Popconfirm placement="right" title={`确认删除已选中的 ${selectedList.length} 个商品吗？`} onConfirm={this.doHandle('delete')} okText="确认" cancelText="取消">

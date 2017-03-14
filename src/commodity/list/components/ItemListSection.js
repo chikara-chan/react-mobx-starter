@@ -86,7 +86,13 @@ render() {
 
       const rowSelection = {
         onChange(selectedRowKeys){
-          handleStore.replaceSelectedList(selectedRowKeys);
+
+          var ids = itemList.map(function(v){
+            return v.id;
+          });
+          handleStore.replaceSelectedList(selectedRowKeys.filter(function(v){
+            return ids.indexOf(v) > -1;
+          }));
         }
       }
 
