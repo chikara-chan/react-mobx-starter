@@ -5,7 +5,7 @@ let entry = {}
 
 fs.readdirSync(path.resolve(__dirname, '../src'))
   .filter(filename =>
-    !filename.match(/^\.|^_|layout|shared/)
+    !filename.match(/^\.|shared/)
   )
   .forEach(filename => {
     entry[`${filename}/bundle`] = `./src/${filename}`
@@ -52,8 +52,6 @@ module.exports = function(env) {
       react: 'window.React',
       'react-dom': 'window.ReactDOM',
       'react-router': 'window.ReactRouter',
-      redux: 'window.Redux',
-      'react-redux': 'window.ReactRedux',
       mobx: 'window.mobx',
       mobxReact: 'window.mobxReact',
       superagent: 'window.superagent'
