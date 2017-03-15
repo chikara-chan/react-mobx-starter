@@ -1,4 +1,4 @@
-# 采购商城卖家版
+# React Mobx Starter
 
 ## 快速开始
 
