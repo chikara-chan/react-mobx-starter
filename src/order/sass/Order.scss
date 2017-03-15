@@ -1,67 +1,6 @@
-@import '../../shared/mixins';
+@import '../../shared/reboot/mixins';
 
 .order {
-  border: 1px solid #D7E5F0;
+  border: $border;
   border-radius: 4px;
-  margin-bottom: 15px;
-  overflow: hidden;
-  .header {
-    position: relative;
-    background: #D3E9FA;
-    padding: 10px 24px;
-    .item {
-      line-height: 30px;
-      margin-right: 10px;
-    }
-    .status {
-      @include absolute(20px 17px auto auto);
-      font-size: $size-lg;
-    }
-  }
-  .table {
-    border-bottom: 1px solid #D7E5F0;
-    .th {
-      background: #F1F8FD;
-      border-top: 1px solid #D7E5F0;
-      border-bottom: 1px solid #D7E5F0;
-      padding: 10px 24px;
-      &.th-right {
-        padding-left: 20px;
-      }
-    }
-    .tr {
-      padding: 14px 19px;
-    }
-  }
-  .footer {
-    @include clearfix();
-    padding: 20px 24px;
-    .col-left {
-      float: left;
-      font-size: 14px;
-      .strong {
-        color: $color-strong;
-      }
-    }
-    .col-right {
-      @media print {
-        display: none;
-      }
-      float: right;
-      .btn {
-        @include reset-link();
-        @include reset-button();
-        padding: 5px 9px;
-        margin-left: 15px;
-        font-size: $size;
-      }
-      .btn-primary {
-        @include reset-link(#fff);
-        @include reset-button($primary);
-        padding: 5px 9px;
-        margin-left: 15px;
-        font-size: $size;
-      }
-    }
-  }
 }

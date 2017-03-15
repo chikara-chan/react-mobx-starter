@@ -1,0 +1,24 @@
+@import '../../../reboot/mixins';
+
+.navbar {
+  @include fixed(0 auto 0 0 1);
+  width: 224px;
+  background: #3E4452;
+  .logo {
+    height: 56px;
+    padding: 16px 0 0 24px;
+    color: #fff;
+  }
+  .menu {
+    background: #3E4452;
+    .item{
+      color: #fff;
+      &.active {
+        background: #2497F0;
+      }
+      .icon-right {
+        @include absolute(15px 10px 0 auto);
+      }
+    }
+  }
+}

@@ -1,9 +1,0 @@
-@import '../../shared/mixins';
-
-.footer-section {
-  @include clearfix();
-  padding: 10px 0;
-  .pagination {
-    float: right;
-  }
-}

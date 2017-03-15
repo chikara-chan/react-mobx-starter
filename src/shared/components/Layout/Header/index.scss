@@ -1,0 +1,21 @@
+@import '../../../reboot/mixins';
+
+.header {
+  @include fixed(0 0 auto 224px 1);
+  @include border(bottom);
+  line-height: 55px;
+  height: 56px;
+  background: #fff;
+  padding: 0 20px;
+  overflow: hidden;
+
+  .container {
+    text-align: right;
+
+    .link {
+      color: $color-light;
+      font-size: $size-lg;
+      margin: 0 15px;
+    }
+  }
+}

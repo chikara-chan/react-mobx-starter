@@ -1,5 +1,5 @@
 import {observable, computed, action} from 'mobx'
-import ajax from 'shared/ajax'
+import ajax from 'shared/utils/ajax'
 
 class FormStore {
   @observable data = {}
