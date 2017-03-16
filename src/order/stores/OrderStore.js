@@ -1,4 +1,4 @@
-import {observable, computed, action} from 'mobx'
+import { observable, computed, action } from 'mobx'
 import ajax from 'shared/utils/ajax'
 import api from 'shared/utils/api'
 import stores from './index'
@@ -10,7 +10,7 @@ class OrderStore {
   }, {
     id: 2,
     name: 'order2'
-  },]
+  }]
 
   @action replaceOrders(orders) {
     this.orders = orders
@@ -21,6 +21,7 @@ class OrderStore {
       url: api.queryOrderList,
       data: stores.formStore.data
     })
+
     this.replaceOrders(res.entry)
   }
 }

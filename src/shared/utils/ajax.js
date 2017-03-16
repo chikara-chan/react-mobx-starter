@@ -1,5 +1,5 @@
 import request from 'superagent'
-import {message} from 'antd'
+import { message } from 'antd'
 
 message.config({
   top: 63
@@ -36,7 +36,7 @@ function ajax(options) {
       }
       if (!res.body.status) {
         if (res.body.responseCode === 10212) {
-          location = './member.html?redirect=' + encodeURIComponent(location.href)
+          location.href = `./member.html?redirect=${encodeURIComponent(location.href)}`
         }
         message.error(res.body.message)
         reject(new Error(res.body.message))

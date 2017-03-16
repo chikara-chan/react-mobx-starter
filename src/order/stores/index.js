@@ -1,4 +1,4 @@
-import {useStrict} from 'mobx'
+import { useStrict } from 'mobx'
 import OrderStore from './OrderStore'
 import FormStore from './FormStore'
 

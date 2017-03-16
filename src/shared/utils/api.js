@@ -3,7 +3,8 @@ function getOuterURL(url) {
   if (~location.host.indexOf('dev.') || ~location.host.indexOf('daily.')) {
     return `http://daily.52shangou.com${url}`
   }
-  // return `http://manage.51xianqu.com${url}`
+
+  // Return `http://manage.51xianqu.com${url}`
   return `http://${document.domain}${url}`
 }
 

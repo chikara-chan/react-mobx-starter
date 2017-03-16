@@ -1,6 +1,4 @@
 import React from 'react'
-import 'antd/lib/style/css'
-import '../../reboot/global'
 import styles from './index.scss'
 import Header from './Header'
 import Navbar from './Navbar'

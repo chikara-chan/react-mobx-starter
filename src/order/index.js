@@ -1,7 +1,9 @@
+import 'antd/lib/style/css'
+import 'shared/reboot/global'
 import React from 'react'
-import {render} from 'react-dom'
-import {Provider} from 'mobx-react'
-import {AppContainer} from 'react-hot-loader'
+import { render } from 'react-dom'
+import { Provider } from 'mobx-react'
+import { AppContainer } from 'react-hot-loader'
 import Layout from 'shared/components/Layout'
 import App from './containers/App'
 import stores from './stores'
@@ -10,7 +12,7 @@ render(
   <AppContainer>
     <Provider {...stores}>
       <Layout>
-        <App/>
+        <App />
       </Layout>
     </Provider>
   </AppContainer>,
